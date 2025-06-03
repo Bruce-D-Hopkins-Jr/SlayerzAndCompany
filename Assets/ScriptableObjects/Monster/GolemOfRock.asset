@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e5002ea55be83499a7e08d47928180, type: 3}
+  m_Name: GolemOfRock
+  m_EditorClassIdentifier: 
+  cardName: Golem of Rock!
+  cardType: 1
+  modelPrefab: {fileID: 1077356408, guid: c1595402d9582ca429e9c162edc7ef0c, type: 3}
+  hitPoints: 50
+  attackPoints: 10
+  currentHitPoints: -7
