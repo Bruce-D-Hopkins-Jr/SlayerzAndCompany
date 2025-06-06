@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Deck : MonoBehaviour
@@ -8,9 +9,13 @@ public class Deck : MonoBehaviour
     public Card DrawCard()
     {
         if (cards.Count == 0) return null;
-        Card drawn = cards[0];
+        Card original = cards[0];
         cards.RemoveAt(0);
-        return drawn;
+
+        if (original is HeroCard hero) return hero.Clone();
+        if (original is PlayCard play) return play.Clone();
+
+        return null;
     }
 
     public void Shuffle()

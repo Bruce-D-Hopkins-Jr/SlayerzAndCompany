@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
         {
             if (position.childCount == 0)
             {
-                Instantiate(heroCard.heroPrefab, position);
-                heroCard.heroPosition = position;
+                GameObject instance = Instantiate(heroCard.heroPrefab, position);
+                heroCard.modelInstance = instance;
                 Debug.Log($"HERO has spawned at {position.position}");
                 return;
             }
@@ -42,4 +42,5 @@ public class Player : MonoBehaviour
             Debug.Log("There are already 3 heroes on your board.");
         }
     }
+    
 }

@@ -163,7 +163,10 @@ public class GameManager : MonoBehaviour
     void MonsterAttack()
     {
         Player target = Random.value < 0.5f ? player : ai;
-        Debug.Log($"Monster attacks {target.name}!");
+        Debug.Log($"Random target chosen: {(target == player ? "PLAYER" : "AI")}");
+        Debug.Log($"Target name: {target.name}");
+        Debug.Log($"Target  heroes count: {target.heroes.Count}");
+        Debug.Log($"Monster attacks {target.playerName}!");
 
         if (target.heroes.Count > 0)
         {
@@ -174,6 +177,11 @@ public class GameManager : MonoBehaviour
             if (targetHero.currentHitPoints <= 0)
             {
                 Debug.Log($"{targetHero.cardName} was defeated!");
+                if (targetHero.modelInstance != null)
+                {
+                    Destroy(targetHero.modelInstance);
+                    targetHero.modelInstance = null;
+                }
                 target.heroes.Remove(targetHero);
             }
         }
