@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: HERO
   cardType: 0
-  modelPrefab: {fileID: 111318, guid: 8bdd0cd654f1e014baf07d97809f9c5f, type: 3}
+  modelPrefab: {fileID: 6028921196505333192, guid: 1c085e61f20460848ae109932e33e9b7, type: 3}
   minHitPoints: 5
   maxHitPoints: 15
   minAttackPoints: 1

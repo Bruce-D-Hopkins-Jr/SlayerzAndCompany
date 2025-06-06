@@ -4,7 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Cards/MonsterCard")]
 public class MonsterCard : Card
 {
-    public GameObject modelPrefab;
+    public GameObject monsterPrefab;
+    [HideInInspector] Transform monsterPosition;
     public int hitPoints;
     public int attackPoints;
 
@@ -13,6 +14,8 @@ public class MonsterCard : Card
     public void SpawnMonster()
     {
         currentHitPoints = hitPoints;
+        Instantiate(monsterPrefab, GameObject.Find("MonsterPosition").transform);
+        monsterPosition = GameObject.Find("MonsterPosition").transform;
         Debug.Log($"The {this.name} has spawned!");
     }
 }
