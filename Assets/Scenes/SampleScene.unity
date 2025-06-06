@@ -2033,6 +2033,7 @@ MonoBehaviour:
   heroes: []
   playedHero: 0
   playedPlayCard: 0
+  heroPositions: {fileID: 770054431}
 --- !u!4 &1807508095
 Transform:
   m_ObjectHideFlags: 0
@@ -2083,6 +2084,7 @@ MonoBehaviour:
   heroes: []
   playedHero: 0
   playedPlayCard: 0
+  heroPositions: {fileID: 90986983}
 --- !u!4 &1828982763
 Transform:
   m_ObjectHideFlags: 0

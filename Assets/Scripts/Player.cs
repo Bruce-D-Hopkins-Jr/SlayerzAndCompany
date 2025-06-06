@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public bool playedHero = false;
     public bool playedPlayCard = false;
 
+    public Transform heroPositions;
+
     public void TakeDamage(int amount)
     {
         lifePoints -= amount;
@@ -23,5 +25,21 @@ public class Player : MonoBehaviour
         playedHero = false;
         playedPlayCard = false;
         Debug.Log($"{playerName}'s turn has been reset.");
+    }
+
+    public void SpawnHero(HeroCard heroCard)
+    {
+        foreach (Transform position in heroPositions)
+        {
+            if (position.childCount == 0)
+            {
+                Instantiate(heroCard.heroPrefab, position);
+                heroCard.heroPosition = position;
+                Debug.Log($"HERO has spawned at {position.position}");
+                return;
+            }
+
+            Debug.Log("There are already 3 heroes on your board.");
+        }
     }
 }

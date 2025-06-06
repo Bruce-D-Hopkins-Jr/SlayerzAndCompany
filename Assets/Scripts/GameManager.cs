@@ -92,10 +92,13 @@ public class GameManager : MonoBehaviour
     {
         // NOTE: Replace this with UI interaction later
         Card heroToPlay = activePlayer.hand.FirstOrDefault(c => c.cardType == CardType.HERO);
-        if (!activePlayer.playedHero && heroToPlay is HeroCard heroCard)
+        if (!activePlayer.playedHero && heroToPlay is HeroCard heroCard && activePlayer.heroes.Count < 3)
         {
             activePlayer.heroes.Add(heroCard);
             activePlayer.hand.Remove(heroCard);
+
+            activePlayer.SpawnHero(heroCard);
+
             activePlayer.playedHero = true;
             Debug.Log($"{activePlayer.name} played hero {heroCard.cardName}");
         }

@@ -14,8 +14,10 @@ public class MonsterCard : Card
     public void SpawnMonster()
     {
         currentHitPoints = hitPoints;
+
         Instantiate(monsterPrefab, GameObject.Find("MonsterPosition").transform);
         monsterPosition = GameObject.Find("MonsterPosition").transform;
+
         Debug.Log($"The {this.name} has spawned!");
     }
 }
