@@ -5,14 +5,12 @@ public class GameManager : MonoBehaviour
 {
     public Deck deck;
     public Player player;
-    public Player ai;
     public MonsterCard currentMonster;
 
     enum GamePhase { DRAW, PLAY, SLAY, MONSTERTURN }
     private GamePhase currentPhase = GamePhase.DRAW;
 
     private Player activePlayer;
-    private bool playerTurn = true;
 
     void Start()
     {
@@ -59,14 +57,6 @@ public class GameManager : MonoBehaviour
                 if (playerCard is HeroCard hero) hero.InitializeStats();
                 if (playerCard is PlayCard play) play.InitializeValue();
             }
-
-            Card aiCard = deck.DrawCard();
-            if (aiCard != null)
-            {
-                ai.hand.Add(aiCard);
-                if (aiCard is HeroCard hero) hero.InitializeStats();
-                if (aiCard is PlayCard play) play.InitializeValue();
-            }
         }
 
         Debug.Log("Both players have drawn their starting hands.");
@@ -106,7 +96,7 @@ public class GameManager : MonoBehaviour
         Card playCardToUse = activePlayer.hand.FirstOrDefault(c => c.cardType == CardType.PLAY);
         if (!activePlayer.playedPlayCard && playCardToUse is PlayCard playCard)
         {
-            ApplyPlayCard(playCard, activePlayer == player ? ai : player);
+            ApplyPlayCard(playCard);
             activePlayer.hand.Remove(playCard);
             activePlayer.playedPlayCard = true;
         }
@@ -138,12 +128,11 @@ public class GameManager : MonoBehaviour
         CheckWinConditions();
 
         // Switch player and reset for next cycle
-        playerTurn = !playerTurn;
-        activePlayer = playerTurn ? player : ai;
+        activePlayer = player;
         currentPhase = GamePhase.DRAW;
     }
 
-    void ApplyPlayCard(PlayCard card, Player opponent)
+    void ApplyPlayCard(PlayCard card)
     {
         if (card.effectType == PlayCardType.HEAL)
         {
@@ -162,7 +151,7 @@ public class GameManager : MonoBehaviour
 
     void MonsterAttack()
     {
-        Player target = Random.value < 0.5f ? player : ai;
+        Player target = player;
         Debug.Log($"Random target chosen: {(target == player ? "PLAYER" : "AI")}");
         Debug.Log($"Target name: {target.name}");
         Debug.Log($"Target  heroes count: {target.heroes.Count}");
@@ -198,19 +187,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Monster defeated! You win!");
             Time.timeScale = 0;
         }
-        else if (player.lifePoints <= 0 && ai.lifePoints <= 0)
-        {
-            Debug.Log("It's a draw! Everyone lost!");
-            Time.timeScale = 0;
-        }
         else if (player.lifePoints <= 0)
         {
-            Debug.Log("AI wins!");
-            Time.timeScale = 0;
-        }
-        else if (ai.lifePoints <= 0)
-        {
-            Debug.Log("Player wins!");
+            Debug.Log("Ur ded!");
             Time.timeScale = 0;
         }
     }
