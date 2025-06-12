@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7786348218703252945}
   - component: {fileID: 833622143964210383}
+  - component: {fileID: 588247533975742858}
   m_Layer: 5
   m_Name: PlayCardUI
   m_TagString: Untagged
@@ -117,6 +118,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &588247533975742858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738311228422319253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64229402436028a48b759008dc820eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: {fileID: 370961027454256509}
+  cardName: {fileID: 5698566042228233790}
+  effectText: {fileID: 6027558344068093256}
 --- !u!1 &1310073390074340697
 GameObject:
   m_ObjectHideFlags: 0

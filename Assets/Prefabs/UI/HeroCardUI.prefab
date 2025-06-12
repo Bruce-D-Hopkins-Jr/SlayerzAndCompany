@@ -1128,6 +1128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3390215427640293118}
   - component: {fileID: 3790157794064209254}
+  - component: {fileID: 919457310751287037}
   m_Layer: 5
   m_Name: HeroCardUI
   m_TagString: Untagged
@@ -1172,3 +1173,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &919457310751287037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285602068919073568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c7175db4101fe4385e3c114a76eb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: {fileID: 1692509044041400937}
+  cardName: {fileID: 1651828385317955585}
+  HPText: {fileID: 5672520074780204750}
+  ATKText: {fileID: 476562931234044495}

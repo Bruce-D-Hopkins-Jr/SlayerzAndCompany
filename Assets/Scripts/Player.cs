@@ -42,5 +42,17 @@ public class Player : MonoBehaviour
             Debug.Log("There are already 3 heroes on your board.");
         }
     }
-    
+
+    public void SpawnHero(HeroCard heroCard, Transform spawnPoint)
+    {
+        if (heroCard.modelInstance == null)
+        {
+            Debug.LogError("HeroCard has no modelPrefab assigned.");
+            return;
+        }
+
+        GameObject model = Instantiate(heroCard.modelInstance, spawnPoint.position, Quaternion.identity, spawnPoint);
+        heroCard.modelInstance = model;
+    }
+
 }

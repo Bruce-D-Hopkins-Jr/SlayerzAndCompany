@@ -12,6 +12,13 @@ public class GameManager : MonoBehaviour
 
     private Player activePlayer;
 
+    public static GameManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         deck.Shuffle();
@@ -192,5 +199,31 @@ public class GameManager : MonoBehaviour
             Debug.Log("Ur ded!");
             Time.timeScale = 0;
         }
+    }
+
+    public void SummonHero(HeroCard hero, Transform position)
+    {
+        if (player.heroes.Count >= 3) return;
+
+        player.heroes.Add(hero);
+        player.SpawnHero(hero, position); // Update your Player.cs if needed
+        Debug.Log($"Summoned {hero.cardName} at {position.name}");
+    }
+
+    public void ApplyDamagePlayCard(PlayCard card)
+    {
+        currentMonster.currentHitPoints -= card.currentEffectValue;
+        Debug.Log($"Monster took {card.currentEffectValue} damage");
+
+        if (currentMonster.currentHitPoints <= 0)
+        {
+            Debug.Log("Monster defeated! You win!");
+        }
+    }
+
+    public void ApplyHealPlayCard(PlayCard card)
+    {
+        player.lifePoints += card.currentEffectValue;
+        Debug.Log($"Player healed {card.currentEffectValue} LP");
     }
 }
