@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     private Player activePlayer;
 
+    [Header("UI Butttons")]
+    public GameObject drawButton;
+    public GameObject nextPhaseButton;
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
         DrawStartingHands();
         currentMonster.SpawnMonster();
         activePlayer = player;
+        UpdatePhaseButtons();
     }
 
     private void Update()
@@ -53,7 +58,6 @@ public class GameManager : MonoBehaviour
         switch (currentPhase)
         {
             case GamePhase.DRAW:
-                DrawPhase();
                 break;
             case GamePhase.PLAY:
                 PlayPhase();
@@ -91,10 +95,8 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Draw phase logic where the player draws one card and prepares for play.
     /// </summary>
-    private void DrawPhase()
-    {
-        
-
+    private void DrawCard()
+    { 
         Card drawn = deck.DrawCard();
         if (drawn == null) return;
 
@@ -105,42 +107,17 @@ public class GameManager : MonoBehaviour
         Debug.Log($"{activePlayer.name} drew {drawn.cardName}");
 
         HandManager.Instance.AddCardToHand(drawn);
-        currentPhase = GamePhase.PLAY;
     }
 
     /// <summary>
     /// Attempts to play one hero and one play card, then moves to the Slay phase.
     /// </summary>
     private void PlayPhase()
-    {
+    {       
         // TODO: Replace auto-play logic with actual player input via UI
         Debug.Log("Play Phase: waiting for player actions...");
 
-        /*
-        // Auto-play a hero card if allowed
-        Card heroToPlay = activePlayer.hand.FirstOrDefault(c => c.cardType == CardType.HERO);
-        if (!activePlayer.playedHero && heroToPlay is HeroCard heroCard && activePlayer.heroes.Count < 3)
-        {
-            activePlayer.heroes.Add(heroCard);
-            activePlayer.hand.Remove(heroCard);
-            activePlayer.SpawnHero(heroCard);
-
-            activePlayer.playedHero = true;
-            Debug.Log($"{activePlayer.name} played hero {heroCard.cardName}");
-        }
-
-        // Auto-play a play card if allowed
-        Card playCardToUse = activePlayer.hand.FirstOrDefault(c => c.cardType == CardType.PLAY);
-        if (!activePlayer.playedPlayCard && playCardToUse is PlayCard playCard)
-        {
-            ApplyPlayCard(playCard);
-            activePlayer.hand.Remove(playCard);
-
-            activePlayer.playedPlayCard = true;
-        }
-
-        currentPhase = GamePhase.SLAY;
-        */
+        UpdatePhaseButtons();
     }
 
     /// <summary>
@@ -162,19 +139,21 @@ public class GameManager : MonoBehaviour
         }
 
         currentPhase = GamePhase.MONSTER;
+        UpdatePhaseButtons();
     }
 
     /// <summary>
     /// The monster performs its attack, then the game checks win/loss conditions and begins a new round.
     /// </summary>
     private void MonsterPhase()
-    {
+    {       
         MonsterAttack();
         CheckWinConditions();
 
         // For now, only one player
         activePlayer = player;
         currentPhase = GamePhase.DRAW;
+        UpdatePhaseButtons();
     }
 
     /// <summary>
@@ -185,7 +164,6 @@ public class GameManager : MonoBehaviour
         switch (currentPhase)
         {
             case GamePhase.DRAW:
-                DrawPhase();
                 break;
 
             case GamePhase.PLAY:
@@ -231,27 +209,6 @@ public class GameManager : MonoBehaviour
                 Destroy(target.modelInstance);
                 target.modelInstance = null;
             }
-        }
-    }
-
-    /// <summary>
-    /// Applies the effect of a play card based on its type.
-    /// </summary>
-    private void ApplyPlayCard(PlayCard card)
-    {
-        switch (card.effectType)
-        {
-            case PlayCardType.HEAL:
-                ApplyHealPlayCard(card);
-                break;
-
-            case PlayCardType.DAMAGE:
-                ApplyDamagePlayCard(card);
-                break;
-
-            default:
-                Debug.LogWarning($"Unhandled play card effect: {card.effectType}");
-                break;
         }
     }
 
@@ -313,6 +270,23 @@ public class GameManager : MonoBehaviour
     }
 
     public GamePhase GetCurrentPhase() => currentPhase;
+
+    public void OnDrawButtonPressed()
+    {
+        Debug.Log("Draw button pressed... Moving to PLAY phase...");
+        DrawCard();
+
+        currentPhase = GamePhase.PLAY;
+        UpdatePhaseButtons();
+    }
+
+    private void UpdatePhaseButtons()
+    {
+        if (drawButton == null || nextPhaseButton == null) return;
+        
+        drawButton.SetActive(currentPhase == GamePhase.DRAW);
+        nextPhaseButton.SetActive(currentPhase != GamePhase.DRAW );        
+    }
 
     /// <summary>
     /// Checks win conditions to determine the victor!
