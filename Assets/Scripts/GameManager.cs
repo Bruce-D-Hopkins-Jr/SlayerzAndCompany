@@ -1,40 +1,54 @@
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Controls the main turn-based game loop and manages core state transitions.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
+    [Header("Game State References")]
     public Deck deck;
     public Player player;
     public MonsterCard currentMonster;
 
-    enum GamePhase { DRAW, PLAY, SLAY, MONSTERTURN }
-    private GamePhase currentPhase = GamePhase.DRAW;
+    public enum GamePhase { DRAW, PLAY, SLAY, MONSTERTURN }
+    [SerializeField] private GamePhase currentPhase = GamePhase.DRAW;
 
     private Player activePlayer;
 
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
+        // Set up singleton instance
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         deck.Shuffle();
         DrawStartingHands();
         currentMonster.SpawnMonster();
-        activePlayer = player;        
+        activePlayer = player;
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             HandleTurn();
         }
     }
-    void HandleTurn()
+
+    /// <summary>
+    /// Handles turn logic based on the current phase of the game.
+    /// </summary>
+    private void HandleTurn()
     {
         switch (currentPhase)
         {
@@ -53,71 +67,92 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void DrawStartingHands()
+    /// <summary>
+    /// Initializes both players' starting hands.
+    /// </summary>
+    private void DrawStartingHands()
     {
         for (int i = 0; i < 5; i++)
         {
             Card playerCard = deck.DrawCard();
-            if (playerCard != null)
-            {
-                player.hand.Add(playerCard);
-                if (playerCard is HeroCard hero) hero.InitializeStats();
-                if (playerCard is PlayCard play) play.InitializeValue();
-            }
+            if (playerCard == null) continue;
+
+            player.hand.Add(playerCard);
+
+            if (playerCard is HeroCard hero) hero.InitializeStats();
+            if (playerCard is PlayCard play) play.InitializeValue();
+
+            HandManager.Instance.AddCardToHand(playerCard);
         }
 
         Debug.Log("Both players have drawn their starting hands.");
     }
 
-    void DrawPhase()
+    /// <summary>
+    /// Draw phase logic where the player draws one card and prepares for play.
+    /// </summary>
+    private void DrawPhase()
     {
+        
+
         Card drawn = deck.DrawCard();
+        if (drawn == null) return;
+
         if (drawn is HeroCard hero) hero.InitializeStats();
         if (drawn is PlayCard play) play.InitializeValue();
-        if (drawn != null)
-        {
-            activePlayer.hand.Add(drawn);
-            Debug.Log($"{activePlayer.name} drew {drawn.cardName}");
-        }
 
-        activePlayer.ResetTurn(); // reset play limits
+        activePlayer.hand.Add(drawn);
+        Debug.Log($"{activePlayer.name} drew {drawn.cardName}");
 
+        HandManager.Instance.AddCardToHand(drawn);
         currentPhase = GamePhase.PLAY;
     }
 
-    void PlayPhase()
+    /// <summary>
+    /// Attempts to play one hero and one play card, then moves to the Slay phase.
+    /// </summary>
+    private void PlayPhase()
     {
-        // NOTE: Replace this with UI interaction later
+        // TODO: Replace auto-play logic with actual player input via UI
+        Debug.Log("Play Phase: waiting for player actions...");
+
+        /*
+        // Auto-play a hero card if allowed
         Card heroToPlay = activePlayer.hand.FirstOrDefault(c => c.cardType == CardType.HERO);
         if (!activePlayer.playedHero && heroToPlay is HeroCard heroCard && activePlayer.heroes.Count < 3)
         {
             activePlayer.heroes.Add(heroCard);
             activePlayer.hand.Remove(heroCard);
-
             activePlayer.SpawnHero(heroCard);
 
             activePlayer.playedHero = true;
             Debug.Log($"{activePlayer.name} played hero {heroCard.cardName}");
         }
 
+        // Auto-play a play card if allowed
         Card playCardToUse = activePlayer.hand.FirstOrDefault(c => c.cardType == CardType.PLAY);
         if (!activePlayer.playedPlayCard && playCardToUse is PlayCard playCard)
         {
             ApplyPlayCard(playCard);
             activePlayer.hand.Remove(playCard);
+
             activePlayer.playedPlayCard = true;
         }
 
         currentPhase = GamePhase.SLAY;
+        */
     }
 
-    void SlayPhase()
+    /// <summary>
+    /// Hero attacks the monster. If the monster is defeated, the game ends.
+    /// </summary>
+    private void SlayPhase()
     {
         HeroCard attacker = activePlayer.heroes.FirstOrDefault();
         if (attacker != null && currentMonster != null)
         {
             currentMonster.currentHitPoints -= attacker.currentAttackPoints;
-            Debug.Log($"{attacker.cardName} attacked monster for {attacker.currentAttackPoints}!");
+            Debug.Log($"{attacker.cardName} attacked the monster for {attacker.currentAttackPoints} damage!");
 
             if (currentMonster.currentHitPoints <= 0)
             {
@@ -129,101 +164,165 @@ public class GameManager : MonoBehaviour
         currentPhase = GamePhase.MONSTERTURN;
     }
 
-    void MonsterTurn()
+    /// <summary>
+    /// The monster performs its attack, then the game checks win/loss conditions and begins a new round.
+    /// </summary>
+    private void MonsterTurn()
     {
         MonsterAttack();
         CheckWinConditions();
 
-        // Switch player and reset for next cycle
+        // For now, only one player
         activePlayer = player;
         currentPhase = GamePhase.DRAW;
     }
 
-    void ApplyPlayCard(PlayCard card)
+    /// <summary>
+    /// Player presses NextPhase Button and game advances to the next phase.
+    /// </summary>
+    public void AdvancePhaseManually()
     {
-        if (card.effectType == PlayCardType.HEAL)
+        switch (currentPhase)
         {
-            activePlayer.lifePoints += card.currentEffectValue;
-            Debug.Log($"{activePlayer.name} healed for {card.currentEffectValue}. LP: {activePlayer.lifePoints}");
-        }
-        else if (card.effectType == PlayCardType.DAMAGE)
-        {
-            if (currentMonster != null)
-            {
-                currentMonster.currentHitPoints -= card.currentEffectValue;
-                Debug.Log($"{activePlayer.name} dealt {card.currentEffectValue} damage to the monster!");
-            }
-        }
-    }
+            case GamePhase.DRAW:
+                DrawPhase();
+                break;
 
-    void MonsterAttack()
-    {
-        Player target = player;
-        Debug.Log($"Random target chosen: {(target == player ? "PLAYER" : "AI")}");
-        Debug.Log($"Target name: {target.name}");
-        Debug.Log($"Target  heroes count: {target.heroes.Count}");
-        Debug.Log($"Monster attacks {target.playerName}!");
-
-        if (target.heroes.Count > 0)
-        {
-            HeroCard targetHero = target.heroes[Random.Range(0, target.heroes.Count)];
-            targetHero.currentHitPoints -= currentMonster.attackPoints;
-            Debug.Log($"Monster hits {targetHero.cardName} for {currentMonster.attackPoints}");
-
-            if (targetHero.currentHitPoints <= 0)
-            {
-                Debug.Log($"{targetHero.cardName} was defeated!");
-                if (targetHero.modelInstance != null)
+            case GamePhase.PLAY:
+                if (activePlayer.playedHero && activePlayer.playedPlayCard)
                 {
-                    Destroy(targetHero.modelInstance);
-                    targetHero.modelInstance = null;
+                    currentPhase = GamePhase.SLAY;
+                    Debug.Log("Play phase complete. Moving to Slay phase.");                    
                 }
-                target.heroes.Remove(targetHero);
+                else
+                {
+                    Debug.LogWarning("You must play both a hero and a play card before ending your turn.");
+                }
+                break;
+
+            case GamePhase.SLAY:
+                SlayPhase();
+                currentPhase = GamePhase.MONSTERTURN;
+                Debug.Log("Moving to Monster turn...");
+                
+                break;
+
+            case GamePhase.MONSTERTURN:
+                MonsterTurn();
+                currentPhase = GamePhase.DRAW;
+                Debug.Log("New round begins. Back to draw phase.");
+                break;
+        }
+    }
+
+    private void MonsterAttack()
+    {
+        // Monster attacks the first hero
+        HeroCard target = activePlayer.heroes.FirstOrDefault();
+        if (target != null)
+        {
+            target.currentHitPoints -= currentMonster.attackPoints;
+            Debug.Log($"Monster attacked {target.cardName} for {currentMonster.attackPoints} damage.");
+
+            if (target.currentHitPoints <= 0)
+            {
+                Debug.Log($"{target.cardName} was defeated.");
+                activePlayer.heroes.Remove(target);
+                Destroy(target.modelInstance);
+                target.modelInstance = null;
             }
         }
-        else
-        {
-            target.TakeDamage(currentMonster.attackPoints);
-        }
     }
 
-    void CheckWinConditions()
+    /// <summary>
+    /// Applies the effect of a play card based on its type.
+    /// </summary>
+    private void ApplyPlayCard(PlayCard card)
     {
-        if (currentMonster.currentHitPoints <= 0)
+        switch (card.effectType)
         {
-            Debug.Log("Monster defeated! You win!");
-            Time.timeScale = 0;
-        }
-        else if (player.lifePoints <= 0)
-        {
-            Debug.Log("Ur ded!");
-            Time.timeScale = 0;
-        }
-    }
+            case PlayCardType.HEAL:
+                ApplyHealPlayCard(card);
+                break;
 
-    public void SummonHero(HeroCard hero, Transform position)
-    {
-        if (player.heroes.Count >= 3) return;
+            case PlayCardType.DAMAGE:
+                ApplyDamagePlayCard(card);
+                break;
 
-        player.heroes.Add(hero);
-        player.SpawnHero(hero, position); // Update your Player.cs if needed
-        Debug.Log($"Summoned {hero.cardName} at {position.name}");
-    }
-
-    public void ApplyDamagePlayCard(PlayCard card)
-    {
-        currentMonster.currentHitPoints -= card.currentEffectValue;
-        Debug.Log($"Monster took {card.currentEffectValue} damage");
-
-        if (currentMonster.currentHitPoints <= 0)
-        {
-            Debug.Log("Monster defeated! You win!");
+            default:
+                Debug.LogWarning($"Unhandled play card effect: {card.effectType}");
+                break;
         }
     }
 
     public void ApplyHealPlayCard(PlayCard card)
     {
-        player.lifePoints += card.currentEffectValue;
-        Debug.Log($"Player healed {card.currentEffectValue} LP");
+        // Heal the first available hero
+        HeroCard target = activePlayer.heroes.FirstOrDefault();
+        if (target != null)
+        {
+            target.currentHitPoints += card.currentEffectValue;
+            activePlayer.playedPlayCard = true;
+            Debug.Log($"{target.cardName} healed for {card.currentEffectValue} HP.");
+        }
+    }
+
+    public void ApplyHealPlayCard(PlayCard card, HeroCard target)
+    {
+        if (target != null)
+        {
+            target.currentHitPoints += card.currentEffectValue;
+            activePlayer.playedPlayCard = true;
+            Debug.Log($"{target.cardName} healed for {card.currentEffectValue} HP");
+        }
+    }
+
+    public void ApplyDamagePlayCard(PlayCard card)
+    {
+        if (currentMonster != null)
+        {
+            currentMonster.currentHitPoints -= card.currentEffectValue;
+            activePlayer.playedPlayCard = true;
+            Debug.Log($"Monster took {card.currentEffectValue} damage from play card.");
+
+            if (currentMonster.currentHitPoints <= 0)
+            {
+                Debug.Log("Monster defeated by play card!");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Summons a hero to the specified world-space transform. Delegates to the active player.
+    /// </summary>
+    /// <param name="heroData">The hero card to summon.</param>
+    /// <param name="spawnPoint">The transform where the hero should appear.</param>
+    public void SummonHero(HeroCard heroData, Transform spawnPoint)
+    {
+        if (activePlayer != null)
+        {
+            activePlayer.heroes.Add(heroData);
+            activePlayer.SpawnHero(heroData, spawnPoint);
+            activePlayer.playedHero = true;
+            Debug.Log($"{activePlayer.name} summoned {heroData.cardName} at {spawnPoint.name}");
+        }
+        else
+        {
+            Debug.LogWarning("No active player set. Cannot summon hero.");
+        }
+    }
+
+    public GamePhase GetCurrentPhase() => currentPhase;
+
+    /// <summary>
+    /// Checks win conditions to determine the victor!
+    /// </summary>
+    private void CheckWinConditions()
+    {
+        if (activePlayer.heroes.Count == 0)
+        {
+            Debug.Log($"{activePlayer.name} has no heroes left. Game Over.");
+        }
     }
 }
+

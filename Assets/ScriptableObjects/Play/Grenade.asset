@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Grenade
   m_EditorClassIdentifier: 
   cardName: GRENADE!!
-  cardType: 2
+  cardDescription: 
+  cardArt: {fileID: 0}
+  cardType: 1
   effectType: 1
   minEffectValue: 1
   maxEffectValue: 10

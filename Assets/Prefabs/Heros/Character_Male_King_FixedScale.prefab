@@ -3339,6 +3339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4688673626148988}
   - component: {fileID: 95760106704058694}
+  - component: {fileID: 8830132773467875618}
   m_Layer: 0
   m_Name: Character_Male_King_FixedScale
   m_TagString: Untagged
@@ -3396,6 +3397,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8830132773467875618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746487477772876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23906c1f38e4c7441b9d33f6cdb15ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroCard: {fileID: 0}
 --- !u!1 &1749651297950914
 GameObject:
   m_ObjectHideFlags: 0

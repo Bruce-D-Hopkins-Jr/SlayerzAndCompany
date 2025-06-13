@@ -1,18 +1,22 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
+/// <summary>
+/// Handles UI setup and drag-and-drop logic for play cards (e.g., healing or damage).
+/// </summary>
 public class PlayCardUI : CardUI
 {
-    private PlayCard playCardData;
-
+    [Header("UI References")]
     public TextMeshProUGUI cardType;
     public TextMeshProUGUI cardName;
-    // public TextMeshProUGUI cardDescription;
     public TextMeshProUGUI effectText;
-    // public Image cardArt;
 
+    private PlayCard playCardData;
+
+    /// <summary>
+    /// Initializes the UI elements of the play card.
+    /// </summary>
     public void Setup(Card card)
     {
         cardType.text = card.cardType.ToString();
@@ -25,24 +29,34 @@ public class PlayCardUI : CardUI
         }
     }
 
+    /// <summary>
+    /// Handles drop logic by raycasting into the world and sending the card to a valid target.
+    /// </summary>
     public override void OnEndDrag(PointerEventData eventData)
     {
         base.OnEndDrag(eventData);
 
-        if (eventData.pointerEnter == null) return;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (!Physics.Raycast(ray, out RaycastHit hit)) return;
 
-        if (playCardData.effectType == PlayCardType.DAMAGE && eventData.pointerEnter.CompareTag("Monster"))
+        DropTarget dropZone = hit.collider.GetComponent<DropTarget>();
+        if (dropZone == null) return;
+
+        if (hit.collider.CompareTag("MonsterPosition"))
         {
-            GameManager.Instance.ApplyDamagePlayCard(playCardData);
-            Destroy(gameObject);
+            dropZone.ReceiveMonsterDrop(playCardData);
         }
-        else if (playCardData.effectType == PlayCardType.HEAL && eventData.pointerEnter.CompareTag("Player"))
+        else if (hit.collider.CompareTag("HeroPosition"))
         {
-            GameManager.Instance.ApplyHealPlayCard(playCardData);
-            Destroy(gameObject);
+            dropZone.ReceiveHeroDrop(playCardData);
         }
+
+        Destroy(gameObject); // Remove UI card from hand
     }
 
+    /// <summary>
+    /// Returns the associated play card data.
+    /// </summary>
     public PlayCard GetPlayCardData()
     {
         return playCardData;

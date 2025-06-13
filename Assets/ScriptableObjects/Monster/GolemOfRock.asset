@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: GolemOfRock
   m_EditorClassIdentifier: 
   cardName: Golem of Rock!
-  cardType: 1
+  cardDescription: 
+  cardArt: {fileID: 0}
+  cardType: 2
   monsterPrefab: {fileID: 1334977650429898, guid: 93c0dd75ddc1c9f4dabe9f061ef19748, type: 3}
   hitPoints: 50
   attackPoints: 10

@@ -1,42 +1,39 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public enum DropType { HERO_POSITION, MONSTER, PLAYER }
-
-public class DropTarget : MonoBehaviour, IDropHandler
+public class DropTarget : MonoBehaviour
 {
-    public DropType dropType;
-
-    public void OnDrop(PointerEventData eventData)
+    public void ReceiveDrop(CardUI dragItem)
     {
-        var cardUI = eventData.pointerDrag.GetComponent<CardUI>();
-        if (cardUI == null) return;
+        Debug.Log("Dropped onto world object: " + gameObject.name);
+    }
 
-        switch (dropType)
+    public void ReceiveHeroDrop(HeroCard heroData)
+    {
+        GameManager.Instance.SummonHero(heroData, transform);
+    }
+
+    public void ReceiveHeroDrop(PlayCard playData)
+    {
+        if (playData.effectType == PlayCardType.HEAL)
         {
-            case DropType.HERO_POSITION:
-                HeroCardUI heroCardUI = cardUI.GetComponent<HeroCardUI>();
-                if (heroCardUI != null)
-                {
-                    GameManager.Instance.SummonHero(heroCardUI.GetHeroCardData(), transform);
-                }
-                break;
+            HeroCard targetHero = GetComponentInChildren<HeroReference>()?.heroCard;
 
-            case DropType.MONSTER:
-                PlayCardUI damageCardUI = cardUI.GetComponent<PlayCardUI>();
-                if (damageCardUI != null && damageCardUI.GetPlayCardData().effectType == PlayCardType.DAMAGE)
-                {
-                    GameManager.Instance.ApplyDamagePlayCard(damageCardUI.GetPlayCardData());
-                }
-                break;
+            if (targetHero != null)
+            {
+                GameManager.Instance.ApplyHealPlayCard(playData, targetHero);
+            }
+            else
+            {
+                Debug.LogWarning("No hero card reference found on this drop target.");
+            }
+        }
+    }
 
-            case DropType.PLAYER:
-                PlayCardUI healCardUI = cardUI.GetComponent<PlayCardUI>();
-                if (healCardUI != null && healCardUI.GetPlayCardData().effectType == PlayCardType.HEAL)
-                {
-                    GameManager.Instance.ApplyHealPlayCard(healCardUI.GetPlayCardData());
-                }
-                break;
+    public void ReceiveMonsterDrop(PlayCard playData)
+    {
+        if (playData.effectType == PlayCardType.DAMAGE)
+        {
+            GameManager.Instance.ApplyDamagePlayCard(playData);
         }
     }
 }

@@ -1,39 +1,43 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Base UI behavior for draggable cards.
+/// Handles drag visuals and raycast behavior.
+/// </summary>
+[RequireComponent(typeof(CanvasGroup))]
 public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private CanvasGroup canvasGroup;
+    private Canvas canvas;
     private RectTransform rectTransform;
-    private Transform originalParent;
+    private CanvasGroup canvasGroup;
 
-    protected virtual void Awake()
+    private void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        canvas = GetComponentInParent<Canvas>();
     }
 
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
-        originalParent = transform.parent;
-        transform.SetParent(transform.root);
+        // Fade card to indicate it's being dragged
+        canvasGroup.alpha = 0.6f;
+
+        // Allow UI raycasts to pass through while dragging
         canvasGroup.blocksRaycasts = false;
     }
 
     public virtual void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / GetCanvasScaleFactor();
+        // Move the card relative to the canvas scale
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public virtual void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(originalParent);
+        // Restore visuals and raycast blocking after drag ends
+        canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
-    }
-
-    float GetCanvasScaleFactor()
-    {
-        Canvas canvas = GetComponentInParent<Canvas>();
-        return canvas != null ? canvas.scaleFactor : 1f;
     }
 }

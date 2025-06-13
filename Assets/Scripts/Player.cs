@@ -1,25 +1,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Represents a player in the game, managing their hand, board state, and hero actions.
+/// </summary>
 public class Player : MonoBehaviour
 {
+    [Header("Player Settings")]
     public string playerName;
     public int lifePoints = 25;
 
+    [Header("Gameplay State")]
     public List<Card> hand = new();
     public List<HeroCard> heroes = new();
 
     public bool playedHero = false;
     public bool playedPlayCard = false;
 
+    [Header("Hero Placement")]
     public Transform heroPositions;
 
+    /// <summary>
+    /// Reduces the player's life points when taking damage.
+    /// </summary>
     public void TakeDamage(int amount)
     {
         lifePoints -= amount;
         Debug.Log($"{playerName} takes {amount} damage! Life Points: {lifePoints}");
     }
 
+    /// <summary>
+    /// Resets the turn-specific actions like played hero and play card flags.
+    /// </summary>
     public void ResetTurn()
     {
         playedHero = false;
@@ -27,6 +39,9 @@ public class Player : MonoBehaviour
         Debug.Log($"{playerName}'s turn has been reset.");
     }
 
+    /// <summary>
+    /// Attempts to spawn a hero in the first available hero slot.
+    /// </summary>
     public void SpawnHero(HeroCard heroCard)
     {
         foreach (Transform position in heroPositions)
@@ -35,24 +50,28 @@ public class Player : MonoBehaviour
             {
                 GameObject instance = Instantiate(heroCard.heroPrefab, position);
                 heroCard.modelInstance = instance;
-                Debug.Log($"HERO has spawned at {position.position}");
+                Debug.Log($"Hero {heroCard.cardName} has spawned at {position.position}");
                 return;
             }
-
-            Debug.Log("There are already 3 heroes on your board.");
         }
+
+        Debug.Log("There are already 3 heroes on your board.");
     }
 
+    /// <summary>
+    /// Directly spawns a hero to a specified location.
+    /// </summary>
     public void SpawnHero(HeroCard heroCard, Transform spawnPoint)
-    {
-        if (heroCard.modelInstance == null)
+    {       
+        GameObject instance = Instantiate(heroCard.heroPrefab, spawnPoint);
+        heroCard.modelInstance = instance;
+
+        HeroReference reference = instance.GetComponent<HeroReference>();
+        if (reference != null)
         {
-            Debug.LogError("HeroCard has no modelPrefab assigned.");
-            return;
+            reference.heroCard = heroCard;
         }
 
-        GameObject model = Instantiate(heroCard.modelInstance, spawnPoint.position, Quaternion.identity, spawnPoint);
-        heroCard.modelInstance = model;
+        Debug.Log($"Hero {heroCard.cardName} spawned at specified location.");
     }
-
 }
