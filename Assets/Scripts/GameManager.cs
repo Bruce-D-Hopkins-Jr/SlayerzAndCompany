@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public MonsterCard currentMonster;
 
-    public enum GamePhase { DRAW, PLAY, SLAY, MONSTERTURN }
+    public enum GamePhase { DRAW, PLAY, SLAY, MONSTER }
     [SerializeField] private GamePhase currentPhase = GamePhase.DRAW;
 
     private Player activePlayer;
@@ -61,8 +61,8 @@ public class GameManager : MonoBehaviour
             case GamePhase.SLAY:
                 SlayPhase();
                 break;
-            case GamePhase.MONSTERTURN:
-                MonsterTurn();
+            case GamePhase.MONSTER:
+                MonsterPhase();
                 break;
         }
     }
@@ -161,13 +161,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        currentPhase = GamePhase.MONSTERTURN;
+        currentPhase = GamePhase.MONSTER;
     }
 
     /// <summary>
     /// The monster performs its attack, then the game checks win/loss conditions and begins a new round.
     /// </summary>
-    private void MonsterTurn()
+    private void MonsterPhase()
     {
         MonsterAttack();
         CheckWinConditions();
@@ -202,13 +202,13 @@ public class GameManager : MonoBehaviour
 
             case GamePhase.SLAY:
                 SlayPhase();
-                currentPhase = GamePhase.MONSTERTURN;
+                currentPhase = GamePhase.MONSTER;
                 Debug.Log("Moving to Monster turn...");
                 
                 break;
 
-            case GamePhase.MONSTERTURN:
-                MonsterTurn();
+            case GamePhase.MONSTER:
+                MonsterPhase();
                 currentPhase = GamePhase.DRAW;
                 Debug.Log("New round begins. Back to draw phase.");
                 break;

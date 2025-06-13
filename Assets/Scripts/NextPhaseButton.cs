@@ -42,7 +42,7 @@ public class NextPhaseButton : MonoBehaviour
             GameManager.GamePhase.DRAW => "PLAY",
             GameManager.GamePhase.PLAY => "SLAY",
             GameManager.GamePhase.SLAY => "MONSTERTURN",
-            GameManager.GamePhase.MONSTERTURN => "DRAW",
+            GameManager.GamePhase.MONSTER => "DRAW",
             _ => "UNKNOWN"
         };
     }
