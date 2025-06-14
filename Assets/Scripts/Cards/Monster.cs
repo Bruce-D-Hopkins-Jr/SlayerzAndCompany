@@ -15,8 +15,6 @@ public class MonsterCard : Card
 
     [HideInInspector] public int currentHitPoints;
 
-    private Transform monsterPosition;
-
     /// <summary>
     /// Spawns the monster prefab at the MonsterPosition anchor in the scene.
     /// </summary>
@@ -24,7 +22,7 @@ public class MonsterCard : Card
     {
         currentHitPoints = hitPoints;
 
-        monsterPosition = GameObject.Find("MonsterPosition")?.transform;
+        Transform monsterPosition = GameObject.Find("MonsterPosition")?.transform;
         if (monsterPosition == null)
         {
             Debug.LogError("No GameObject named 'MonsterPosition' found in the scene.");

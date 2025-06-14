@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GamePhase currentPhase = GamePhase.DRAW;
 
     private Player activePlayer;
+    private Transform monsterPosition;
 
     [Header("UI Butttons")]
     public GameObject drawButton;
@@ -44,9 +45,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        monsterPosition = GameObject.Find("MonsterPosition").transform;
+        if (currentPhase != GamePhase.PLAY)
         {
-            HandleTurn();
+            monsterPosition.GetComponent<BoxCollider>().enabled = false;
+        }
+        else
+        {
+            monsterPosition.GetComponent<BoxCollider>().enabled = true;
         }
     }
 

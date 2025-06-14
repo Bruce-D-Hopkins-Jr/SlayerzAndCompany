@@ -20,6 +20,21 @@ public class Player : MonoBehaviour
     [Header("Hero Placement")]
     public Transform heroPositions;
 
+    private void Update()
+    {
+        foreach(Transform positions in heroPositions)
+        {
+            if (GameManager.Instance.GetCurrentPhase() != GameManager.GamePhase.PLAY)
+            {
+                positions.GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                positions.GetComponent<BoxCollider>().enabled = true;
+            }
+        }
+    }
+
     /// <summary>
     /// Reduces the player's life points when taking damage.
     /// </summary>
