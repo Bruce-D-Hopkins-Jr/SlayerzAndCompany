@@ -44,7 +44,7 @@ public class HeroCardUI : CardUI
             if (hit.collider.CompareTag("HeroPosition"))
             {
                 DropTarget dropZone = hit.collider.GetComponent<DropTarget>();
-                if (dropZone != null)
+                if (dropZone != null && dropZone.gameObject.transform.childCount == 0)
                 {
                     dropZone.ReceiveHeroDrop(heroCardData);
                     Destroy(gameObject);

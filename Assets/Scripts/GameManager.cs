@@ -267,6 +267,7 @@ public class GameManager : MonoBehaviour
             activePlayer.heroes.Add(heroData);
             activePlayer.SpawnHero(heroData, spawnPoint);
             activePlayer.playedHero = true;
+            activePlayer.hand.Remove(heroData);
             Debug.Log($"{activePlayer.name} summoned {heroData.cardName} at {spawnPoint.name}");
         }
         else

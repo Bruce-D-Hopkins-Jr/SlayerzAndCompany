@@ -77,16 +77,23 @@ public class Player : MonoBehaviour
     /// Directly spawns a hero to a specified location.
     /// </summary>
     public void SpawnHero(HeroCard heroCard, Transform spawnPoint)
-    {       
-        GameObject instance = Instantiate(heroCard.heroPrefab, spawnPoint);
-        heroCard.modelInstance = instance;
-
-        HeroReference reference = instance.GetComponent<HeroReference>();
-        if (reference != null)
+    {
+        if (spawnPoint.childCount == 0)
         {
-            reference.heroCard = heroCard;
-        }
+            GameObject instance = Instantiate(heroCard.heroPrefab, spawnPoint);
+            heroCard.modelInstance = instance;
 
-        Debug.Log($"Hero {heroCard.cardName} spawned at specified location.");
+            HeroReference reference = instance.GetComponent<HeroReference>();
+            if (reference != null)
+            {
+                reference.heroCard = heroCard;
+            }
+
+            Debug.Log($"Hero {heroCard.cardName} spawned at specified location.");
+        }
+        else
+        {
+            Debug.Log("A hero is already at this position");
+        }
     }
 }
