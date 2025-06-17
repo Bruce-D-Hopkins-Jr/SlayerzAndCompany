@@ -35,6 +35,8 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             return;
         }
 
+        if (GameManager.Instance.activePlayer.playedHero && this is HeroCardUI) return;
+
         // Fade card to indicate it's being dragged
         canvasGroup.alpha = 0.6f;
         // Allow UI raycasts to pass through while dragging
@@ -49,6 +51,8 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             return;
         }
 
+        if (GameManager.Instance.activePlayer.playedHero && this is HeroCardUI) return;
+
         // Move the card relative to the canvas scale
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
@@ -60,6 +64,8 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             Debug.Log("Can't interact with cards outside of PLAY phase.");
             return;
         }
+
+        if (GameManager.Instance.activePlayer.playedHero && this is HeroCardUI) return;
 
         // Restore visuals and raycast blocking after drag ends
         canvasGroup.alpha = 1f;

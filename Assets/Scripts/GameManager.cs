@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public enum GamePhase { DRAW, PLAY, SLAY, MONSTER }
     [SerializeField] private GamePhase currentPhase = GamePhase.DRAW;
 
-    private Player activePlayer;
+    [HideInInspector]public Player activePlayer;
     private Transform monsterPosition;
 
     [Header("UI Butttons")]
