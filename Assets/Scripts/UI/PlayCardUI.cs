@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -29,12 +29,31 @@ public class PlayCardUI : CardUI
         }
     }
 
+    public override void OnBeginDrag(PointerEventData eventData)
+    {
+        if (GameManager.Instance.activePlayer.playedPlayCard)
+        {
+            Debug.Log("Play card has already been played, cannot drag.");
+            return;
+        }
+
+        base.OnBeginDrag(eventData); // ✅ only if all checks pass
+    }
+
     /// <summary>
     /// Handles drop logic by raycasting into the world and sending the card to a valid target.
     /// </summary>
     public override void OnEndDrag(PointerEventData eventData)
     {
         base.OnEndDrag(eventData);
+
+        var player = GameManager.Instance.activePlayer;
+
+        if (player.playedPlayCard)
+        {
+            Debug.Log("You have already played a Play Card this turn.");
+            return;
+        }
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!Physics.Raycast(ray, out RaycastHit hit)) return;
