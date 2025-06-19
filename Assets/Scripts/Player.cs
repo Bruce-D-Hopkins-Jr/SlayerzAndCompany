@@ -83,6 +83,14 @@ public class Player : MonoBehaviour
             GameObject instance = Instantiate(heroCard.heroPrefab, spawnPoint);
             heroCard.modelInstance = instance;
 
+            if (GameManager.Instance.heroHUDUIPrefab != null)
+            {
+                GameObject hud = Instantiate(GameManager.Instance.heroHUDUIPrefab, heroCard.modelInstance.transform);
+                hud.GetComponent<HeroHUDUI>().Init(heroCard);
+            }
+            
+
+
             HeroReference reference = instance.GetComponent<HeroReference>();
             if (reference != null)
             {

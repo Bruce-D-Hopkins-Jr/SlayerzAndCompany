@@ -733,8 +733,10 @@ MonoBehaviour:
   player: {fileID: 1807508094}
   currentMonster: {fileID: 11400000, guid: be57c5fe058116f48b3f5bfa30eef8cc, type: 2}
   currentPhase: 0
+  activePlayer: {fileID: 0}
   drawButton: {fileID: 1300503458}
   nextPhaseButton: {fileID: 400264672}
+  heroHUDUIPrefab: {fileID: 622904622360018983, guid: 84debfaac73774c4baa3302022d0798a, type: 3}
 --- !u!4 &530267030
 Transform:
   m_ObjectHideFlags: 0

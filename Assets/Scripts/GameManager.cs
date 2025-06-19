@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public GameObject drawButton;
     public GameObject nextPhaseButton;
 
+    [Header("Hero UI Prefab")]
+    public GameObject heroHUDUIPrefab;
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
