@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Controls the main turn-based game loop and manages core state transitions.
@@ -134,6 +135,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void SlayPhase()
     {
+        /*
         HeroCard attacker = activePlayer.heroes.FirstOrDefault();
         if (attacker != null && currentMonster != null)
         {
@@ -146,6 +148,22 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+        */
+        foreach (Transform position in activePlayer.heroPositions)
+        {            
+            /*
+            if (position.GetChild(0) != null)
+            {
+                GameObject heroPrefab;
+                heroPrefab = position.GetChild(0).gameObject;
+
+                GameObject heroAttackButton;
+                heroAttackButton = heroPrefab.GetComponentInChildren<HeroHUDUI>().attackButton.gameObject;
+
+                heroAttackButton.SetActive(false);
+            } 
+            */
+        }
 
         currentPhase = GamePhase.MONSTER;
         UpdatePhaseButtons();
@@ -155,7 +173,7 @@ public class GameManager : MonoBehaviour
     /// The monster performs its attack, then the game checks win/loss conditions and begins a new round.
     /// </summary>
     private void MonsterPhase()
-    {       
+    {
         MonsterAttack();
         CheckWinConditions();
 
@@ -179,7 +197,15 @@ public class GameManager : MonoBehaviour
                 if (activePlayer.playedHero && activePlayer.playedPlayCard)
                 {
                     currentPhase = GamePhase.SLAY;
-                    Debug.Log("Play phase complete. Moving to Slay phase.");                    
+                    Debug.Log("Play phase complete. Moving to Slay phase.");
+                    
+                    foreach (Transform position in activePlayer.heroPositions)
+                    {
+                        if(position.childCount != 0)
+                        {
+                            position.GetChild(0).GetComponentInChildren<HeroHUDUI>().attackButton.gameObject.SetActive(true);
+                        }                        
+                    }                    
                 }
                 else
                 {

@@ -22,6 +22,9 @@ public class HeroCard : Card
     [HideInInspector] public int currentHitPoints;
     [HideInInspector] public int currentAttackPoints;
 
+    [Header("Attack Flag")]
+    public bool hasAttacked = false;
+
     /// <summary>
     /// Randomizes hero stats within the configured min/max bounds.
     /// </summary>

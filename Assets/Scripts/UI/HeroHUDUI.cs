@@ -6,7 +6,7 @@ public class HeroHUDUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI atkText;
-    [SerializeField] private Button attackButton;
+    [SerializeField] public Button attackButton;
 
     private HeroCard hero;
 
@@ -29,11 +29,6 @@ public class HeroHUDUI : MonoBehaviour
     private void Update()
     {
         if (GameManager.Instance == null) return;
-
-        // Show attack button only in SLAY phase and only if it's still enabled
-        bool show = GameManager.Instance.GetCurrentPhase() == GameManager.GamePhase.SLAY;
-        attackButton.gameObject.SetActive(show);
-
         transform.forward = Camera.main.transform.forward; // face camera
         UpdateHUD();
     }
@@ -49,8 +44,11 @@ public class HeroHUDUI : MonoBehaviour
     private void OnAttackPressed()
     {
         if (GameManager.Instance.GetCurrentPhase() != GameManager.GamePhase.SLAY) return;
+        if (hero.hasAttacked) return;
 
         GameManager.Instance.currentMonster.currentHitPoints -= hero.currentAttackPoints;
-        Debug.Log($"{hero.cardName} attacks for {hero.currentAttackPoints}!");        
+        Debug.Log($"{hero.cardName} attacks for {hero.currentAttackPoints}!");
+
+        attackButton.gameObject.SetActive( false );
     }
 }
