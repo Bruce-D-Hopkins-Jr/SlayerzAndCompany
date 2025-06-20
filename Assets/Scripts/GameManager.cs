@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public enum GamePhase { DRAW, PLAY, SLAY, MONSTER }
     [SerializeField] private GamePhase currentPhase = GamePhase.DRAW;
 
-    [HideInInspector]public Player activePlayer;
+    [HideInInspector] public Player activePlayer;
     private Transform monsterPosition;
 
     [Header("UI Butttons")]
@@ -61,27 +61,6 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Handles turn logic based on the current phase of the game.
-    /// </summary>
-    private void HandleTurn()
-    {
-        switch (currentPhase)
-        {
-            case GamePhase.DRAW:
-                break;
-            case GamePhase.PLAY:
-                PlayPhase();
-                break;
-            case GamePhase.SLAY:
-                SlayPhase();
-                break;
-            case GamePhase.MONSTER:
-                MonsterPhase();
-                break;
-        }
-    }
-
-    /// <summary>
     /// Initializes both players' starting hands.
     /// </summary>
     private void DrawStartingHands()
@@ -106,7 +85,7 @@ public class GameManager : MonoBehaviour
     /// Draw phase logic where the player draws one card and prepares for play.
     /// </summary>
     private void DrawCard()
-    { 
+    {
         Card drawn = deck.DrawCard();
         if (drawn == null) return;
 
@@ -123,8 +102,7 @@ public class GameManager : MonoBehaviour
     /// Attempts to play one hero and one play card, then moves to the Slay phase.
     /// </summary>
     private void PlayPhase()
-    {       
-        // TODO: Replace auto-play logic with actual player input via UI
+    {
         Debug.Log("Play Phase: waiting for player actions...");
 
         UpdatePhaseButtons();
@@ -135,36 +113,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void SlayPhase()
     {
-        /*
-        HeroCard attacker = activePlayer.heroes.FirstOrDefault();
-        if (attacker != null && currentMonster != null)
-        {
-            currentMonster.currentHitPoints -= attacker.currentAttackPoints;
-            Debug.Log($"{attacker.cardName} attacked the monster for {attacker.currentAttackPoints} damage!");
-
-            if (currentMonster.currentHitPoints <= 0)
-            {
-                Debug.Log($"{activePlayer.name} slayed the monster! Game Over!");
-                return;
-            }
-        }
-        */
-        foreach (Transform position in activePlayer.heroPositions)
-        {            
-            /*
-            if (position.GetChild(0) != null)
-            {
-                GameObject heroPrefab;
-                heroPrefab = position.GetChild(0).gameObject;
-
-                GameObject heroAttackButton;
-                heroAttackButton = heroPrefab.GetComponentInChildren<HeroHUDUI>().attackButton.gameObject;
-
-                heroAttackButton.SetActive(false);
-            } 
-            */
-        }
-
         currentPhase = GamePhase.MONSTER;
         UpdatePhaseButtons();
     }
@@ -180,7 +128,11 @@ public class GameManager : MonoBehaviour
         // For now, only one player
         activePlayer = player;
         currentPhase = GamePhase.DRAW;
-        UpdatePhaseButtons();
+
+        if (activePlayer.lifePoints >= 0 && currentMonster.currentHitPoints >=0)
+        {
+            UpdatePhaseButtons();
+        }        
     }
 
     /// <summary>
@@ -194,22 +146,15 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GamePhase.PLAY:
-                if (activePlayer.playedHero && activePlayer.playedPlayCard)
+                currentPhase = GamePhase.SLAY;
+                Debug.Log("Play phase complete. Moving to Slay phase.");
+
+                foreach (Transform position in activePlayer.heroPositions)
                 {
-                    currentPhase = GamePhase.SLAY;
-                    Debug.Log("Play phase complete. Moving to Slay phase.");
-                    
-                    foreach (Transform position in activePlayer.heroPositions)
+                    if (position.childCount != 0)
                     {
-                        if(position.childCount != 0)
-                        {
-                            position.GetChild(0).GetComponentInChildren<HeroHUDUI>().attackButton.gameObject.SetActive(true);
-                        }                        
-                    }                    
-                }
-                else
-                {
-                    Debug.LogWarning("You must play both a hero and a play card before ending your turn.");
+                        position.GetChild(0).GetComponentInChildren<HeroHUDUI>().attackButton.gameObject.SetActive(true);
+                    }
                 }
                 break;
 
@@ -217,7 +162,6 @@ public class GameManager : MonoBehaviour
                 SlayPhase();
                 currentPhase = GamePhase.MONSTER;
                 Debug.Log("Moving to Monster turn...");
-                
                 break;
 
             case GamePhase.MONSTER:
@@ -244,6 +188,11 @@ public class GameManager : MonoBehaviour
                 Destroy(target.modelInstance);
                 target.modelInstance = null;
             }
+        }
+        else
+        {
+            activePlayer.lifePoints -= currentMonster.attackPoints;
+            Debug.Log($"Monster attacked {activePlayer.playerName} for {currentMonster.attackPoints} damage.");
         }
     }
 
@@ -276,10 +225,11 @@ public class GameManager : MonoBehaviour
             currentMonster.currentHitPoints -= card.currentEffectValue;
             activePlayer.playedPlayCard = true;
             Debug.Log($"Monster took {card.currentEffectValue} damage from play card.");
+            Debug.Log($"{currentMonster.cardName}: {currentMonster.currentHitPoints}HP");
 
             if (currentMonster.currentHitPoints <= 0)
             {
-                Debug.Log("Monster defeated by play card!");
+                CheckWinConditions();
             }
         }
     }
@@ -311,6 +261,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Draw button pressed... Moving to PLAY phase...");
         DrawCard();
+        activePlayer.ResetTurn();
 
         currentPhase = GamePhase.PLAY;
         UpdatePhaseButtons();
@@ -319,19 +270,43 @@ public class GameManager : MonoBehaviour
     private void UpdatePhaseButtons()
     {
         if (drawButton == null || nextPhaseButton == null) return;
-        
+
         drawButton.SetActive(currentPhase == GamePhase.DRAW);
-        nextPhaseButton.SetActive(currentPhase != GamePhase.DRAW );        
+        nextPhaseButton.SetActive(currentPhase != GamePhase.DRAW);
     }
 
     /// <summary>
     /// Checks win conditions to determine the victor!
     /// </summary>
-    private void CheckWinConditions()
+    public void CheckWinConditions()
     {
-        if (activePlayer.heroes.Count == 0)
+        if (activePlayer.lifePoints <= 0)
         {
-            Debug.Log($"{activePlayer.name} has no heroes left. Game Over.");
+            Debug.Log($"{currentMonster.cardName} WINS!!");
+            drawButton.SetActive(false);
+            nextPhaseButton.SetActive(false );
+
+            foreach (Transform position in activePlayer.heroPositions)
+            {
+                if (position.childCount != 0)
+                {
+                    position.GetChild(0).GetComponentInChildren<HeroHUDUI>().attackButton.gameObject.SetActive(false);
+                }
+            }
+        }
+        else if (currentMonster.currentHitPoints <=0)
+        {
+            Debug.Log($"{activePlayer.playerName} WINS!!");
+            drawButton.SetActive(false);
+            nextPhaseButton.SetActive(false);
+
+            foreach (Transform position in activePlayer.heroPositions)
+            {
+                if (position.childCount != 0)
+                {
+                    position.GetChild(0).GetComponentInChildren<HeroHUDUI>().attackButton.gameObject.SetActive(false);
+                }
+            }
         }
     }
 }

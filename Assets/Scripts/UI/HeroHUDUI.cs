@@ -48,7 +48,10 @@ public class HeroHUDUI : MonoBehaviour
 
         GameManager.Instance.currentMonster.currentHitPoints -= hero.currentAttackPoints;
         Debug.Log($"{hero.cardName} attacks for {hero.currentAttackPoints}!");
+        Debug.Log($"{GameManager.Instance.currentMonster.cardName}: {GameManager.Instance.currentMonster.currentHitPoints} HP");
 
         attackButton.gameObject.SetActive( false );
+
+        GameManager.Instance.CheckWinConditions();
     }
 }
