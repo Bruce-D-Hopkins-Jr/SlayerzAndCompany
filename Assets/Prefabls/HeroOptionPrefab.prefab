@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 765632739757811869}
   - component: {fileID: 3171825145824774244}
   - component: {fileID: 5203062282458139791}
+  - component: {fileID: -7224661517476748696}
   m_Layer: 5
   m_Name: HeroOptionPrefab
   m_TagString: Untagged
@@ -334,6 +335,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-7224661517476748696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5052581876789823542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7568921e2778cd499213e9c069bf53f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroTypeText: {fileID: 7738623902987250082}
+  selectButton: {fileID: 5625495268874025605}
 --- !u!1 &8857498494322330847
 GameObject:
   m_ObjectHideFlags: 0
