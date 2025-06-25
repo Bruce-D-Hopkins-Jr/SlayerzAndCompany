@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4042889615674821448}
   - component: {fileID: 7738623902987250082}
   m_Layer: 5
-  m_Name: HeroName
+  m_Name: MonsterName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hero Name
+  m_text: Monster Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -268,9 +268,9 @@ GameObject:
   - component: {fileID: 765632739757811869}
   - component: {fileID: 3171825145824774244}
   - component: {fileID: 5203062282458139791}
-  - component: {fileID: -7224661517476748696}
+  - component: {fileID: -685475831544505767}
   m_Layer: 5
-  m_Name: HeroOptionPrefab
+  m_Name: BountyOptionPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.98039216, g: 0.95016587, b: 0.22745097, a: 0.39215687}
+  m_Color: {r: 0.6792453, g: 0.44791815, b: 0.18903525, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-7224661517476748696
+--- !u!114 &-685475831544505767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,10 +344,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5052581876789823542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7568921e2778cd499213e9c069bf53f, type: 3}
+  m_Script: {fileID: 11500000, guid: d21b059f5bfb40741be6aabce2b5339d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroTypeText: {fileID: 7738623902987250082}
+  bossNameText: {fileID: 7738623902987250082}
   selectButton: {fileID: 5625495268874025605}
 --- !u!1 &8857498494322330847
 GameObject:

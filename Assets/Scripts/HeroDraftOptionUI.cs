@@ -18,8 +18,11 @@ public class HeroDraftOptionUI : MonoBehaviour
 
         selectButton.onClick.AddListener(() =>
         {
-            heroDraftManager.SelectHero(heroData);
-            selectButton.interactable = false;
+            if(heroDraftManager.GetSelectedHeroes().Count < 3)
+            {
+                heroDraftManager.SelectHero(heroData);
+                selectButton.interactable = false;
+            }            
         });
     }
 }

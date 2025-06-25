@@ -6,6 +6,8 @@ public class HeroDraftManager : MonoBehaviour
 {
     public List<HeroCard> heroesList;
     public GameObject heroOptionPrefab;
+    public GameObject heroOptionUI;
+    public GameObject bountyOptionUI;
     public Transform heroOptionsContainer;
     public Button continueButton;
 
@@ -46,6 +48,11 @@ public class HeroDraftManager : MonoBehaviour
         {
             Debug.Log($"- {hero.heroType}");
         }
+
+        GameManager.Instance.StoreDraftedHeroes(selectedHeroes);
+
+        heroOptionUI.SetActive(false);
+        bountyOptionUI.SetActive(true);
     }
 
     public void SelectHero(HeroCard hero)
@@ -59,5 +66,10 @@ public class HeroDraftManager : MonoBehaviour
         {
             continueButton.interactable = true;
         }
+    }
+
+    public List<HeroCard> GetSelectedHeroes()
+    {
+        return selectedHeroes;
     }
 }
