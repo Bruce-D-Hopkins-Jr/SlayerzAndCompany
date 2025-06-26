@@ -149,14 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroesList:
-  - {fileID: 11400000, guid: 3c6402939b212cc428ef9863dd1578f3, type: 2}
-  - {fileID: 11400000, guid: eeecac1bda4011f40995f6eea33451b0, type: 2}
-  - {fileID: 11400000, guid: c5a580648cbab1a4381237623130e347, type: 2}
-  - {fileID: 11400000, guid: c56100dbc955f9045b3d0425606fcc94, type: 2}
-  - {fileID: 11400000, guid: 1d976f1a48218034db932353ce76cbff, type: 2}
-  - {fileID: 11400000, guid: eb09a8dcf1d24e54ca6b352cd3ab117f, type: 2}
-  - {fileID: 11400000, guid: 359373ce84c2bb747a80c5eca5f40bad, type: 2}
-  - {fileID: 11400000, guid: 29138056e4bc974458c87589c3b30375, type: 2}
+  - {fileID: 11400000, guid: 61d1c389ff6fe3e40acd2036f300c557, type: 2}
+  - {fileID: 11400000, guid: 761d8e83d404ba1439275b2a43b6510e, type: 2}
+  - {fileID: 11400000, guid: e8f1090803b50064b93aa30bbcba4c16, type: 2}
+  - {fileID: 11400000, guid: 260c789c88f42424aa519851c6f1f0d6, type: 2}
   heroOptionPrefab: {fileID: 5052581876789823542, guid: 89620beff8842d641ae5f41cb5ac9feb, type: 3}
   heroOptionUI: {fileID: 1989519412}
   bountyOptionUI: {fileID: 607453987}
