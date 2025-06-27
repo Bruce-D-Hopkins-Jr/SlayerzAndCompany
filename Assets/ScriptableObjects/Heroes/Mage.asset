@@ -18,3 +18,7 @@ MonoBehaviour:
   maxHP: 0
   attack: 0
   portrait: {fileID: 0}
+  skillCards:
+  - {fileID: 11400000, guid: 5d3c85f846d152b4796be6dbc78eac4a, type: 2}
+  - {fileID: 11400000, guid: d4aa112ac964bd14a88a72da8348b5a8, type: 2}
+  - {fileID: 11400000, guid: 244ed3793f904b64f8c39a91f6903901, type: 2}

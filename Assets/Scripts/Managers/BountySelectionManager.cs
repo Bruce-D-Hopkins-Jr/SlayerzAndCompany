@@ -47,6 +47,11 @@ public class BountySelectionManager : MonoBehaviour
         GameManager.Instance.StoreBountySelection(selectedBoss);
         Debug.Log($"Selected Boss: {selectedBoss.monsterName}");
 
+        DeckManager deckManager = FindAnyObjectByType<DeckManager>();
+        deckManager.BuildDeck(GameManager.Instance.draftedHeroes);
+
+        GameManager.Instance.LoadScene();
+
         // Proceed to battle loop
     }
 
