@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4462b904cf756bd409f38dad4bd2f773, type: 3}
-  m_Name: Tyrantula
+  m_Name: KingBee(baby)
   m_EditorClassIdentifier: 
-  monsterName: Tyrantula
-  maxHP: 100
-  attack: 0
+  monsterName: King Bee (baby)
+  maxHP: 20
+  attack: 5
   portrait: {fileID: 0}
-  monsterPrefab: {fileID: 0}
+  monsterPrefab: {fileID: 3198499350609119052, guid: 8d783a6df695d2448a5d0c39affe26dc, type: 3}

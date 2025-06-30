@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Hauntclaw
   m_EditorClassIdentifier: 
   monsterName: Hauntclaw
-  trait: 
-  portrait: {fileID: 0}
-  maxHp: 175
+  maxHP: 250
   attack: 14
+  portrait: {fileID: 0}
+  monsterPrefab: {fileID: 2611149553095981223, guid: cfb2a1ff48855f14da5043d0656d36f1, type: 3}
+  trait: 

@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66258939e678ab247bf1dbe1e4f11f19, type: 3}
-  m_Name: KingBee
+  m_Script: {fileID: 11500000, guid: 4462b904cf756bd409f38dad4bd2f773, type: 3}
+  m_Name: Hauntclaw(teen)
   m_EditorClassIdentifier: 
-  monsterName: King Bee
-  maxHP: 250
-  attack: 12
+  monsterName: Hauntclaw (teen)
+  maxHP: 75
+  attack: 10
   portrait: {fileID: 0}
-  monsterPrefab: {fileID: 6902694358650038786, guid: b72fc8bdd7a508e41888ed288c06516a, type: 3}
-  trait: 
+  monsterPrefab: {fileID: 2143963233178108554, guid: 6eb7c74ad0a8d204293628fe2fd142e1, type: 3}
