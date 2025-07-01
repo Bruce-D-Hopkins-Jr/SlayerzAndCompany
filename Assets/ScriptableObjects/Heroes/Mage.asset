@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47abedec3ee6744f88214b8a24a506b, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
-  heroName: 
   heroType: 2
   trait: 
-  maxHP: 0
+  maxHP: 60
   attack: 0
   portrait: {fileID: 0}
+  heroPrefab: {fileID: 2498799951068624437, guid: 084d366434dc489418167b52dbb76ade, type: 3}
   skillCards:
   - {fileID: 11400000, guid: 5d3c85f846d152b4796be6dbc78eac4a, type: 2}
   - {fileID: 11400000, guid: d4aa112ac964bd14a88a72da8348b5a8, type: 2}

@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 491689850926280294}
   - component: {fileID: 3920844411075751697}
   m_Layer: 0
-  m_Name: Character_Dummy_Female_01
+  m_Name: WarriorPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,7 +772,7 @@ Animator:
   m_GameObject: {fileID: 2498799951068624437}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b5f71c859f9f9bf41badda8a4650082c, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f49df4e9c006ef4a96961585d0a5d44, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

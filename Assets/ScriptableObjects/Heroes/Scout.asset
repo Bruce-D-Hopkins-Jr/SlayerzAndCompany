@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47abedec3ee6744f88214b8a24a506b, type: 3}
   m_Name: Scout
   m_EditorClassIdentifier: 
-  heroName: 
   heroType: 1
   trait: 
-  maxHP: 0
+  maxHP: 55
   attack: 0
   portrait: {fileID: 0}
+  heroPrefab: {fileID: 8168549003077210334, guid: 003d727d9e0bdcb46a83f7fcf6ab02d1, type: 3}
   skillCards:
   - {fileID: 11400000, guid: e36bd11f20f494e419c3942f1471c17f, type: 2}
   - {fileID: 11400000, guid: 40576fc4283915b4c8875698a9c49177, type: 2}

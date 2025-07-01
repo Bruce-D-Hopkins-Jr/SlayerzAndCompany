@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Hero : ScriptableObject
 {
     [Header("Hero Info")]
-    [SerializeField] private string heroName;
     [SerializeField] private HeroType heroType;
     [SerializeField] private string trait;
 
@@ -20,7 +19,6 @@ public class Hero : ScriptableObject
     [Header("Skill Cards")]
     [SerializeField] private List<SkillCard> skillCards;
 
-    public string HeroName => heroName;
     public HeroType HeroType => heroType;
     public string Trait => trait;
     public int MaxHP => maxHP;

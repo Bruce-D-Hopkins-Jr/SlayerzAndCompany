@@ -2095,7 +2095,7 @@ GameObject:
   - component: {fileID: 2131047659480659321}
   - component: {fileID: 2534430926725144804}
   m_Layer: 0
-  m_Name: Character_Dummy_Male_01
+  m_Name: ScoutPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2133,7 +2133,7 @@ Animator:
   m_GameObject: {fileID: 8168549003077210334}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b5f71c859f9f9bf41badda8a4650082c, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab8c957b8cdcd2940acc897aa192b836, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

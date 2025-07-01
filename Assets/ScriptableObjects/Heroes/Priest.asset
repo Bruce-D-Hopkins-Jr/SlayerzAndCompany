@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47abedec3ee6744f88214b8a24a506b, type: 3}
   m_Name: Priest
   m_EditorClassIdentifier: 
-  heroName: 
   heroType: 3
   trait: 
-  maxHP: 0
+  maxHP: 70
   attack: 0
   portrait: {fileID: 0}
+  heroPrefab: {fileID: 8168549003077210334, guid: 5f74ad55e33e7d9498bab71e44523675, type: 3}
   skillCards:
   - {fileID: 11400000, guid: 37172c70aaf56044a9c5470c1d72c685, type: 2}
   - {fileID: 11400000, guid: 1b5125ecf5152ca458b972b93ca0f8e2, type: 2}
