@@ -1,31 +1,31 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class BountyOptionUI : MonoBehaviour
 {
-    public TextMeshProUGUI bossNameText;
-    public Button selectButton;
+    [SerializeField] private TextMeshProUGUI bossNameText;
+    [SerializeField] private Button selectButton;
 
-    private BossMonster monsterData;
-    private BountySelectionManager manager;
+    private BossMonster bountyData;
 
-    public void Setup(BossMonster bounty, BountySelectionManager bountyManager)
+    public event Action<BossMonster> OnSelected;
+
+    public void Setup(BossMonster bounty)
     {
-        monsterData = bounty;
-        manager = bountyManager;
-
-        bossNameText.text = bounty.monsterName.ToString();
-
-        selectButton.onClick.AddListener(() => 
+        bountyData = bounty;
+        bossNameText.text = bounty.MonsterName;
+        selectButton.onClick.AddListener(() =>
         {
-            if (!manager.GetSelectedBoss())
-            {
-                manager.SelectBounty(monsterData);
-                selectButton.interactable = false;
-            }            
+            OnSelected?.Invoke(bountyData);
         });
-                  
-                  
     }
+
+    public void DisableSelection()
+    {
+        selectButton.interactable = false;
+    }
+
+    public BossMonster BountyData => bountyData;
 }

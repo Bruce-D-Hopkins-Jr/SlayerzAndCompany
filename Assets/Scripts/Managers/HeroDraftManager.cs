@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 public class HeroDraftManager : MonoBehaviour
 {
-    public List<Hero> heroesList;
-    public GameObject heroOptionPrefab;
-    public GameObject heroOptionUI;
-    public GameObject bountyOptionUI;
-    public Transform heroOptionsContainer;
-    public Button continueButton;
+    [SerializeField] private List<Hero> heroesList;
+    [SerializeField] private GameObject heroOptionPrefab;
+    [SerializeField] private Transform heroOptionsContainer;
+    [SerializeField] private Button continueButton;
+    [SerializeField] private GameObject heroOptionUI;
+    [SerializeField] private GameObject bountyOptionUI;
 
-    private List<Hero> selectedHeroes = new List<Hero>();
+    private List<Hero> selectedHeroes = new();
+    private List<HeroDraftOptionUI> uiOptions = new();
 
     private void Start()
     {
@@ -20,52 +21,42 @@ public class HeroDraftManager : MonoBehaviour
         continueButton.onClick.AddListener(ConfirmSelection);
     }
 
-    void GenerateDraftOptions()
+    private void GenerateDraftOptions()
     {
-        List<Hero> pool = new List<Hero>();
-        //Note: Get rid of this to in order to choose out of 5 randomly selected heroes
-        int poolIndex = 0;
+        List<Hero> pool = new();
 
+        int poolIndex = 0;
         while (pool.Count < 4)
         {
-            //Note: Change to [Random.Range(0, heroesList.Count)]
             var hero = heroesList[poolIndex];
             if (!pool.Contains(hero))
-            {
                 pool.Add(hero);
-            }
 
             poolIndex++;
         }
 
         foreach (var hero in pool)
         {
-            GameObject option = Instantiate(heroOptionPrefab, heroOptionsContainer);
-            var ui = option.GetComponent<HeroDraftOptionUI>();
-            ui.Setup(hero, this);
+            GameObject optionGO = Instantiate(heroOptionPrefab, heroOptionsContainer);
+            var optionUI = optionGO.GetComponent<HeroDraftOptionUI>();
+
+            optionUI.Setup(hero);
+            optionUI.OnHeroSelected += HandleHeroSelection;
+
+            uiOptions.Add(optionUI);
         }
     }
 
-    void ConfirmSelection()
-    {
-        Debug.Log("Final selection confirmed!");
-        foreach (var hero in selectedHeroes)
-        {
-            Debug.Log($"- {hero.heroType}");
-        }
-
-        GameManager.Instance.StoreDraftedHeroes(selectedHeroes);
-
-        heroOptionUI.SetActive(false);
-        bountyOptionUI.SetActive(true);
-    }
-
-    public void SelectHero(Hero hero)
+    private void HandleHeroSelection(Hero hero)
     {
         if (selectedHeroes.Contains(hero) || selectedHeroes.Count >= 3) return;
 
         selectedHeroes.Add(hero);
-        Debug.Log($"Selected: {hero.heroType}");
+        Debug.Log($"Selected: {hero.HeroType}");
+
+        // Disable UI for selected hero
+        HeroDraftOptionUI ui = uiOptions.Find(ui => ui.HeroData == hero);
+        ui?.DisableSelection();
 
         if (selectedHeroes.Count == 3)
         {
@@ -73,8 +64,18 @@ public class HeroDraftManager : MonoBehaviour
         }
     }
 
-    public List<Hero> GetSelectedHeroes()
+    private void ConfirmSelection()
     {
-        return selectedHeroes;
+        Debug.Log("Final selection confirmed!");
+        foreach (var hero in selectedHeroes)
+        {
+            Debug.Log($"- {hero.HeroType}");
+        }
+
+        GameManager.Instance.StoreDraftedHeroes(selectedHeroes);
+        heroOptionUI.SetActive(false);
+        bountyOptionUI.SetActive(true);
     }
+
+    public List<Hero> GetSelectedHeroes() => selectedHeroes;
 }

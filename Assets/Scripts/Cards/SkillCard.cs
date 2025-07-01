@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkillCard", menuName = "Cards/SkillCard")]
 public class SkillCard : Card
 {
-    public HeroType heroType;
-    public string effect;
+    [SerializeField] private HeroType heroType;
+    [SerializeField, TextArea] private string effect;
+
+    public HeroType HeroType => heroType;
+    public string Effect => effect;
 }

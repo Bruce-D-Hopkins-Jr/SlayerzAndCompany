@@ -4,25 +4,28 @@ using TMPro;
 
 public class HeroDraftOptionUI : MonoBehaviour
 {
-    public TextMeshProUGUI heroTypeText;
-    public Button selectButton;
+    [SerializeField] private TextMeshProUGUI heroTypeText;
+    [SerializeField] private Button selectButton;
 
     private Hero heroData;
-    private HeroDraftManager heroDraftManager;
 
-    public void Setup(Hero hero, HeroDraftManager manager)
+    public event System.Action<Hero> OnHeroSelected;
+
+    public void Setup(Hero hero)
     {
         heroData = hero;
-        heroDraftManager = manager;
-        heroTypeText.text = hero.heroType.ToString();
+        heroTypeText.text = hero.HeroType.ToString();
 
         selectButton.onClick.AddListener(() =>
         {
-            if(heroDraftManager.GetSelectedHeroes().Count < 3)
-            {
-                heroDraftManager.SelectHero(heroData);
-                selectButton.interactable = false;
-            }            
+            OnHeroSelected?.Invoke(heroData);
         });
     }
+
+    public void DisableSelection()
+    {
+        selectButton.interactable = false;
+    }
+
+    public Hero HeroData => heroData;
 }
