@@ -23,16 +23,19 @@ public class SpawnManager : MonoBehaviour
             return;
         }
 
-        switch (bountyMonster.MonsterName)
+        switch (bountyMonster.MonsterType)
         {
-            case "Tyrantula":
+            case MonsterType.TYRANTULA:
                 SpawnMonsters(tyrantula);
                 break;
-            case "Hauntclaw":
+            case MonsterType.HAUNTCLAW:
                 SpawnMonsters(hauntclaw);
                 break;
-            case "King Bee":
+            case MonsterType.KINGBEE:
                 SpawnMonsters(kingbee);
+                break;
+            default:
+                Debug.LogWarning($"No spawn logic for monster type: {bountyMonster.MonsterType}");
                 break;
         }
     }
@@ -51,8 +54,15 @@ public class SpawnManager : MonoBehaviour
             GameObject prefab = heroes[i].HeroPrefab;
             if (prefab != null)
             {
-                Instantiate(prefab, heroSpawnPoints[i]);
-                Debug.Log($"Spawned Hero: {heroes[i].HeroType}");
+                GameObject instance = Instantiate(prefab, heroSpawnPoints[i]);
+                HeroCombatController combat = instance.GetComponent<HeroCombatController>();
+
+                if(combat != null)
+                {
+                    combat.SetHeroData(heroes[i]);
+                }
+                
+                Debug.Log($"Spawned Hero: {heroes[i].HeroType}");                
             }
             else
             {
@@ -68,12 +78,19 @@ public class SpawnManager : MonoBehaviour
             GameObject prefab = monsterList[i].MonsterPrefab;
             if (prefab != null)
             {
-                Instantiate(prefab, monsterSpawnPoints[i]);
-                Debug.Log($"Spawned monster: {monsterList[i].MonsterName}");
+                GameObject instance = Instantiate(prefab, monsterSpawnPoints[i]);
+                MonsterCombatController combat = instance.GetComponent<MonsterCombatController>();
+
+                if (combat != null)
+                {
+                    combat.SetMonsterData(monsterList[i]);
+                }
+                
+                Debug.Log($"Spawned monster: {monsterList[i].MonsterName}");                
             }
             else
             {
-                Debug.LogWarning($"No prefab assigned for hero: {monsterList[i].MonsterName}");
+                Debug.LogWarning($"No prefab assigned for monster: {monsterList[i].MonsterName}");
             }
         }
     }

@@ -2094,6 +2094,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2131047659480659321}
   - component: {fileID: 2534430926725144804}
+  - component: {fileID: 7467280922354188474}
+  - component: {fileID: 6217564887436609757}
+  - component: {fileID: 870688413747023597}
   m_Layer: 0
   m_Name: ScoutPrefab
   m_TagString: Untagged
@@ -2145,6 +2148,52 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7467280922354188474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168549003077210334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f2bc6a32a45e6498793569ffd754ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroData: {fileID: 0}
+--- !u!65 &6217564887436609757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168549003077210334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.32510546, y: 1.794482, z: 0.3086737}
+  m_Center: {x: 0.00014145672, y: 0.88460004, z: -0.0052268654}
+--- !u!114 &870688413747023597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168549003077210334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913ad2d46b922fb4ea08cb83e1c8e939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8182728239561217063
 GameObject:
   m_ObjectHideFlags: 0

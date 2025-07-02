@@ -1,17 +1,40 @@
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-[Serializable]
 public class PhaseManager : MonoBehaviour
 {
-    public GamePhase CurrentPhase { get; private set; } = GamePhase.DRAW;
+    public static PhaseManager Instance;
 
-    public enum GamePhase
+    public GamePhase CurrentPhase { get; private set; } = GamePhase.SLAY;
+
+    private void Start()
     {
-        DRAW,
-        PLAY,
-        SLAY,
-        MONSTER
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "TestScene")
+        {
+            Debug.Log("PhaseManager: TestScene loaded, beginning turn cycle.");
+            AdvancePhase();
+        }
     }
 
     public void AdvancePhase()
@@ -20,19 +43,19 @@ public class PhaseManager : MonoBehaviour
         {
             case GamePhase.DRAW:
                 StartDrawPhase();
-                CurrentPhase = GamePhase.PLAY;
+                CurrentPhase = GamePhase.DRAW;
                 break;
             case GamePhase.PLAY:
                 StartPlayPhase();
-                CurrentPhase = GamePhase.SLAY;
+                CurrentPhase = GamePhase.PLAY;
                 break;
             case GamePhase.SLAY:
                 StartSlayPhase();
-                CurrentPhase = GamePhase.MONSTER;
+                CurrentPhase = GamePhase.SLAY;
                 break;
             case GamePhase.MONSTER:
                 StartMonsterPhase();
-                CurrentPhase = GamePhase.DRAW;
+                CurrentPhase = GamePhase.MONSTER;
                 break;
         }
     }
@@ -52,6 +75,7 @@ public class PhaseManager : MonoBehaviour
     private void StartSlayPhase()
     {
         Debug.Log("Starting SLAY phase.");
+        PhaseManagerEvents.OnSlayPhaseStarted?.Invoke();
         // Enable hero targeting/attacks
     }
 
@@ -60,4 +84,17 @@ public class PhaseManager : MonoBehaviour
         Debug.Log("Starting MONSTER phase.");
         // Trigger monster AI
     }
+}
+
+public static class PhaseManagerEvents
+{
+    public static System.Action OnSlayPhaseStarted;
+}
+
+public enum GamePhase
+{
+    DRAW,
+    PLAY,
+    SLAY,
+    MONSTER
 }

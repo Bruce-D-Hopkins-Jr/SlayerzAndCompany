@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     public List<Hero> draftedHeroes = new();
     public BossMonster selectedBounty;
 
-    [SerializeField] private PhaseManager phaseManager;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -21,17 +19,6 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        // You can kick off the game loop here
-        phaseManager.AdvancePhase();  // Starts at DRAW phase
-    }
-
-    public void AdvancePhase()
-    {
-        phaseManager.AdvancePhase();
     }
 
     public void StoreDraftedHeroes(List<Hero> heroes)

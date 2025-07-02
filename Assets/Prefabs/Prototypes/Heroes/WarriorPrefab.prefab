@@ -733,6 +733,9 @@ GameObject:
   m_Component:
   - component: {fileID: 491689850926280294}
   - component: {fileID: 3920844411075751697}
+  - component: {fileID: 477751514133036961}
+  - component: {fileID: 2734203232914411491}
+  - component: {fileID: 8386356542855741647}
   m_Layer: 0
   m_Name: WarriorPrefab
   m_TagString: Untagged
@@ -784,6 +787,52 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &477751514133036961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2498799951068624437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f2bc6a32a45e6498793569ffd754ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroData: {fileID: 0}
+--- !u!65 &2734203232914411491
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2498799951068624437}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.32510546, y: 1.794482, z: 0.3086737}
+  m_Center: {x: 0.00014145672, y: 0.88460004, z: -0.0052268654}
+--- !u!114 &8386356542855741647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2498799951068624437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913ad2d46b922fb4ea08cb83e1c8e939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2504562639617601056
 GameObject:
   m_ObjectHideFlags: 0
