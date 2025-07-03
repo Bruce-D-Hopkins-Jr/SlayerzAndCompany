@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("[GameManager] All heroes are dead. Game Over.");
             // Trigger defeat logic
+            FindAnyObjectByType<GameOverUIManager>().ShowGameOver(false);
         }
     }
 }

@@ -6,6 +6,12 @@ public class EncounterManager : MonoBehaviour
     public static EncounterManager Instance { get; private set; }
 
     [SerializeField] private List<Transform> encounters;
+    [SerializeField] private Transform heroes;
+    [SerializeField] private List<Transform> heroPositions;
+    [SerializeField] private float moveSpeed = 5f;
+
+    private Vector3 targetPosition;
+    private bool isMoving = false;
     private int currentEncounterIndex = 0;
 
     public Transform CurrentEncounterRoot => encounters[currentEncounterIndex];
@@ -21,7 +27,22 @@ public class EncounterManager : MonoBehaviour
         }
 
         Instance = this;
-    }    
+    }
+
+    private void Update()
+    {
+        if (isMoving)
+        {
+            heroes.position = Vector3.MoveTowards (heroes.position, targetPosition, moveSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(heroes.position, targetPosition) < 0.01f)
+            {
+                heroes.position = targetPosition;
+                isMoving = false;
+                Debug.Log("[EncounterManager] HeroContainer arrived at new encounter position.");
+            }
+        }
+    }
 
     public List<MonsterCombatController> GetActiveEncounterMonsters()
     {
@@ -43,9 +64,14 @@ public class EncounterManager : MonoBehaviour
             {
                 Debug.Log("[EncounterManager] All encounters cleared! You win!");
                 // Optionally trigger win condition here
+                FindAnyObjectByType<GameOverUIManager>().ShowGameOver(true);
+            }
+            else
+            {
+                MoveHeroes();
             }
 
-            PhaseManager.Instance.AdvancePhase();
+                PhaseManager.Instance.AdvancePhase();
         }
     }
 
@@ -58,6 +84,20 @@ public class EncounterManager : MonoBehaviour
     public bool AllEncountersCleared()
     {
         return currentEncounterIndex >= encounters.Count;
+    }
+
+    public void MoveHeroes()
+    {
+        if (currentEncounterIndex < heroPositions.Count)
+        {
+            targetPosition = heroPositions[currentEncounterIndex].position;
+            isMoving = true;
+            Debug.Log($"[EncounterManager] HeroContainer will move to {heroPositions[currentEncounterIndex].name}");
+        }
+        else
+        {
+            Debug.LogWarning("[EncounterManager] No hero position defined for this encounter.");
+        }
     }
 
     
