@@ -9,35 +9,24 @@ public class MonsterCombatController : MonoBehaviour
     public Monster MonsterData => monsterData;
     public bool IsAlive => isAlive;
 
-    private void Start()
-    {
-        Debug.Log($"[MonsterCombatController] START: {monsterData?.MonsterName ?? "null"} | currentHP = {currentHP}");
-    }
-
     public void TakeDamage(int amount)
     {
         Debug.Log($"[MonsterCombatController] {monsterData.MonsterName} takes {amount} damage. HP before: {currentHP}");
 
-        if (!IsAlive)
-        {
-            Debug.LogWarning($"[MonsterCombatController] Already dead at {currentHP} HP.");
-            return;
-        }
-
         currentHP -= amount;
-
         Debug.Log($"[MonsterCombatController] HP after: {currentHP}");
 
         if (currentHP <= 0)
         {
-            Die();
-            isAlive = false;
+            Die();            
         }
     }
 
     private void Die()
     {
         Debug.Log($"[MonsterCombatController] {monsterData.MonsterName} has died.");
+        isAlive = false;
+        EncounterManager.Instance.NotifyMonsterDefeated();
         Destroy(gameObject);
     }
 

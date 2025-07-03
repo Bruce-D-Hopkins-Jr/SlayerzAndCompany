@@ -45,26 +45,20 @@ public class HeroCombatController : MonoBehaviour
     {
         Debug.Log($"[HeroCombatController] {heroData.HeroType} takes {amount} damage. HP before: {currentHP}");
 
-        if (!IsAlive)
-        {
-            Debug.LogWarning($"[HeroCombatController] Already dead at {currentHP} HP.");
-            return;
-        }
-
         currentHP -= amount;
-
         Debug.Log($"[HeroCombatController] HP after: {currentHP}");
 
         if (currentHP <= 0)
         {
-            Die();
-            isAlive = false;
+            Die();            
         }
     }
 
     private void Die()
     {
         Debug.Log($"[HeroCombatController] {heroData.HeroType} has died.");
+        isAlive = false;
+        GameManager.Instance.NotifyHeroDefeated();
         Destroy(gameObject);
     }
 

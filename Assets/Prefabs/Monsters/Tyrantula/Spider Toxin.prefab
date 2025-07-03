@@ -802,6 +802,7 @@ GameObject:
   - component: {fileID: 8754938060832142236}
   - component: {fileID: 8754938060839623804}
   - component: {fileID: 8042737579546936811}
+  - component: {fileID: 5353479436824353785}
   m_Layer: 0
   m_Name: Spider Toxin
   m_TagString: Untagged
@@ -888,6 +889,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0191615, y: 1.2571068, z: 1.4261949}
   m_Center: {x: 0.004632592, y: 0.63118565, z: -0.020846486}
+--- !u!114 &5353479436824353785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754938060832370620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89dae089d9602a347a2913c9da077a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 0}
 --- !u!1 &8754938060832370622
 GameObject:
   m_ObjectHideFlags: 0

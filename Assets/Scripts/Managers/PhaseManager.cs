@@ -18,6 +18,25 @@ public class PhaseManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (CurrentPhase == GamePhase.SLAY)
+            {
+                Debug.Log("[Test] Forcing advance to MONSTER phase.");
+                StartMonsterPhase();
+                CurrentPhase = GamePhase.MONSTER;
+            }
+            else if (CurrentPhase == GamePhase.MONSTER)
+            {
+                Debug.Log("[Test] Forcing advance to SLAY phase.");
+                StartSlayPhase();
+                CurrentPhase = GamePhase.SLAY;
+            }
+        }
+    }
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -82,13 +101,21 @@ public class PhaseManager : MonoBehaviour
     private void StartMonsterPhase()
     {
         Debug.Log("Starting MONSTER phase.");
+        PhaseManagerEvents.OnMonsterPhaseStarted?.Invoke();
         // Trigger monster AI
+    }
+
+    //Temporary
+    public void SetCurrentPhase(GamePhase phase)
+    {
+        CurrentPhase = phase;
     }
 }
 
 public static class PhaseManagerEvents
 {
     public static System.Action OnSlayPhaseStarted;
+    public static System.Action OnMonsterPhaseStarted;
 }
 
 public enum GamePhase

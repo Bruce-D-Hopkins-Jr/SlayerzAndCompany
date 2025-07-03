@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 3198499350608632684}
   - component: {fileID: 3198499350616388748}
   - component: {fileID: 7740846464364864083}
+  - component: {fileID: 234906506093597210}
   m_Layer: 0
   m_Name: Bee
   m_TagString: Untagged
@@ -561,6 +562,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7249873, y: 0.7215277, z: 0.9948112}
   m_Center: {x: -0.0025945008, y: 0.6892622, z: -0.047565177}
+--- !u!114 &234906506093597210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3198499350609119052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89dae089d9602a347a2913c9da077a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 0}
 --- !u!1 &3198499350609119054
 GameObject:
   m_ObjectHideFlags: 0

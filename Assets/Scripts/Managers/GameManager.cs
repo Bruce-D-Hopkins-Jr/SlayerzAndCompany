@@ -36,4 +36,25 @@ public class GameManager : MonoBehaviour
         Debug.Log("Loading dungeon...");
         SceneManager.LoadScene("TestScene");
     }
+
+    public void NotifyHeroDefeated()
+    {
+        var heroes = FindObjectsByType<HeroCombatController>(FindObjectsSortMode.None);
+        bool anyAlive = false;
+
+        foreach (var hero in heroes)
+        {
+            if (hero.IsAlive)
+            {
+                anyAlive = true;
+                break;
+            }
+        }
+
+        if (!anyAlive)
+        {
+            Debug.Log("[GameManager] All heroes are dead. Game Over.");
+            // Trigger defeat logic
+        }
+    }
 }

@@ -555,6 +555,7 @@ GameObject:
   - component: {fileID: 3925056490110497726}
   - component: {fileID: 3925056490120305758}
   - component: {fileID: 6711916901409623557}
+  - component: {fileID: 2559525884869973791}
   m_Layer: 0
   m_Name: Bumble
   m_TagString: Untagged
@@ -638,6 +639,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5044176, y: 1.1230539, z: 0.8162638}
   m_Center: {x: 0.005057049, y: 0.8706407, z: -0.05478374}
+--- !u!114 &2559525884869973791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925056490110922654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89dae089d9602a347a2913c9da077a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 0}
 --- !u!1 &3925056490110922716
 GameObject:
   m_ObjectHideFlags: 0
