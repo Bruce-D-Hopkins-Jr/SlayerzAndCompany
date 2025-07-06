@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: King Bee
   maxHP: 600
-  attack: 12
+  attack: 20
   portrait: {fileID: 0}
   monsterPrefab: {fileID: 6902694358650038786, guid: b72fc8bdd7a508e41888ed288c06516a, type: 3}
   monsterType: 2

@@ -15,7 +15,7 @@ MonoBehaviour:
   heroType: 2
   trait: 
   maxHP: 50
-  attack: 150
+  attack: 10
   portrait: {fileID: 0}
   heroPrefab: {fileID: 2498799951068624437, guid: 084d366434dc489418167b52dbb76ade, type: 3}
   skillCards:
