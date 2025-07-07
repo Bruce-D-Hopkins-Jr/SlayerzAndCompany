@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Hauntclaw (teen)
   maxHP: 300
-  attack: 10
+  minAttack: 10
+  maxAttack: 15
   portrait: {fileID: 0}
   monsterPrefab: {fileID: 2143963233178108554, guid: 6eb7c74ad0a8d204293628fe2fd142e1, type: 3}

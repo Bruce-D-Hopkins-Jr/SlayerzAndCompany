@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Tyrantula (teen)
   maxHP: 300
-  attack: 10
+  minAttack: 10
+  maxAttack: 15
   portrait: {fileID: 0}
   monsterPrefab: {fileID: 8754938060832370620, guid: 20ab8450d1ef5f84298c02971f34ef71, type: 3}

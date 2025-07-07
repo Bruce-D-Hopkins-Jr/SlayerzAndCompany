@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: King Bee (teen)
   maxHP: 300
-  attack: 15
+  minAttack: 10
+  maxAttack: 15
   portrait: {fileID: 0}
   monsterPrefab: {fileID: 3925056490110922654, guid: fe5e0f7b07ab3ad469447526a0d5a023, type: 3}
