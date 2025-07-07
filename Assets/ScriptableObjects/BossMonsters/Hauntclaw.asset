@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hauntclaw
   m_EditorClassIdentifier: 
   monsterName: Hauntclaw
-  maxHP: 600
+  maxHP: 450
   minAttack: 15
   maxAttack: 20
   portrait: {fileID: 0}

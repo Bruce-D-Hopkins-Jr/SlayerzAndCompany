@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KingBee
   m_EditorClassIdentifier: 
   monsterName: King Bee
-  maxHP: 600
+  maxHP: 450
   minAttack: 15
   maxAttack: 20
   portrait: {fileID: 0}
