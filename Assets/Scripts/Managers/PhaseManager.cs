@@ -95,11 +95,23 @@ public class PhaseManager : MonoBehaviour
     {
         Debug.Log("Starting SLAY phase.");
         PhaseManagerEvents.OnSlayPhaseStarted?.Invoke();
+        //Show selection rings on heroes
+        foreach (var hero in FindObjectsByType<HeroCombatController>(FindObjectsSortMode.None))
+        { 
+            var visual = hero.GetComponent<HeroVisual>();
+            visual?.ShowRing(true);
+            visual?.SetRingState(HeroRingState.Available);
+        }
         // Enable hero targeting/attacks
     }
 
     private void StartMonsterPhase()
     {
+        //Remove selection rings on heroes
+        foreach (var hero in FindObjectsByType<HeroCombatController>(FindObjectsSortMode.None))
+        {
+            hero.GetComponent<HeroVisual>()?.ShowRing(false);
+        }
         Debug.Log("Starting MONSTER phase.");
         PhaseManagerEvents.OnMonsterPhaseStarted?.Invoke();
         // Trigger monster AI

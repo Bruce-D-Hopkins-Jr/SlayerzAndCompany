@@ -3,12 +3,20 @@ using UnityEngine;
 public class HeroCombatController : MonoBehaviour
 {
     [SerializeField] private Hero heroData;
+    private HeroVisual visual;
     private int currentHP;
     private bool hasActed;
     private bool isAlive = true;
 
     public Hero HeroData => heroData;
     public bool IsAlive => isAlive;
+    public bool HasActed => hasActed;
+
+    private void Awake()
+    {
+        visual = GetComponent<HeroVisual>();
+    }
+
     private void OnEnable()
     {
         PhaseManagerEvents.OnSlayPhaseStarted += ResetHeroAction;
@@ -39,6 +47,7 @@ public class HeroCombatController : MonoBehaviour
         Debug.Log($"[HeroCombatController] {heroData.HeroType} attacked for {heroData.Attack} damage!");
 
         hasActed = true;
+        visual?.SetRingState(HeroRingState.Used);
     }
 
     public void TakeDamage(int amount)

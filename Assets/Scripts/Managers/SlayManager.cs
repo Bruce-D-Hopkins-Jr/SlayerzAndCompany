@@ -49,8 +49,28 @@ public class SlayManager : MonoBehaviour
             return;
         }
 
+        if (selectedHero != null)
+        {
+            var previousVisual = selectedHero.GetComponent<HeroVisual>();
+            if (selectedHero.HasActed)
+                previousVisual?.SetRingState(HeroRingState.Used);
+            else
+                previousVisual?.SetRingState(HeroRingState.Available);
+        }
+
         selectedHero = hero;
-        Debug.Log($"[SlayManager] Selected hero: {hero.HeroData.HeroType}");
+
+        if (selectedHero.HasActed)
+        {
+            Debug.Log("This hero has already acted this turn");
+        }
+        else
+        {
+            
+            selectedHero.GetComponent<HeroVisual>()?.SetRingState(HeroRingState.Selected);
+        }
+
+            Debug.Log($"[SlayManager] Selected hero: {hero.HeroData.HeroType}");
     }
 
     private void ResetSlayState()
