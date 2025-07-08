@@ -70,7 +70,13 @@ public class SlayManager : MonoBehaviour
             selectedHero.GetComponent<HeroVisual>()?.SetRingState(HeroRingState.Selected);
         }
 
-            Debug.Log($"[SlayManager] Selected hero: {hero.HeroData.HeroType}");
+        foreach (var monster in EncounterManager.Instance.GetActiveEncounterMonsters())
+        {
+            var visual = monster.GetComponent<MonsterVisual>();
+            visual?.ShowTargetIndicator(true);
+        }
+
+        Debug.Log($"[SlayManager] Selected hero: {hero.HeroData.HeroType}");
     }
 
     private void ResetSlayState()

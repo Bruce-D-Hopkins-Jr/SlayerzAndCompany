@@ -2210,7 +2210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionRing: {fileID: 2430659902824298000}
-  ringRenderer: {fileID: 2445403486084565120}
+  selectionRingRenderer: {fileID: 2445403486084565120}
+  targetIndicator: {fileID: 1612115210867281454}
   availableColor: {r: 0, g: 0, b: 1, a: 1}
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   usedColor: {r: 1, g: 0, b: 0, a: 1}
@@ -2722,5 +2723,10 @@ PrefabInstance:
 --- !u!4 &1609915369846363288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7842352516203777210, guid: 9b8d1419882c484498779e044ed9bbb8, type: 3}
+  m_PrefabInstance: {fileID: 8827674774950238242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1612115210867281454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7844515538061121036, guid: 9b8d1419882c484498779e044ed9bbb8, type: 3}
   m_PrefabInstance: {fileID: 8827674774950238242}
   m_PrefabAsset: {fileID: 0}

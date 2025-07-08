@@ -3,7 +3,8 @@ using UnityEngine;
 public class HeroVisual : MonoBehaviour
 {
     [SerializeField] private GameObject selectionRing;
-    [SerializeField] private Renderer ringRenderer;
+    [SerializeField] private Renderer selectionRingRenderer;
+    [SerializeField] private GameObject targetIndicator;
 
     [Header("Ring Colors")]
     [SerializeField] private Color availableColor = Color.blue;
@@ -18,22 +19,29 @@ public class HeroVisual : MonoBehaviour
 
     public void SetRingState(HeroRingState state)
     {
-        if (ringRenderer == null) return;
+        if (selectionRingRenderer == null) return;
 
         switch (state)
         {
             case HeroRingState.Available:
-                ringRenderer.material.color = availableColor;
+                selectionRingRenderer.material.color = availableColor;
                 break;
             case HeroRingState.Selected:
-                ringRenderer.material.color = selectedColor;
+                selectionRingRenderer.material.color = selectedColor;
                 break;
             case HeroRingState.Used:
-                ringRenderer.material.color = usedColor;
+                selectionRingRenderer.material.color = usedColor;
                 break;
         }
     }
+
+    public void ShowTargetIndicator(bool show)
+    {
+        if (targetIndicator != null)
+            targetIndicator.SetActive(show);
+    }
 }
+
 
 public enum HeroRingState
 {

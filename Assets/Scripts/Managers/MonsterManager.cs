@@ -39,6 +39,11 @@ public class MonsterManager : MonoBehaviour
                 yield break;
             }
 
+            var visual = target.GetComponent<HeroVisual>();
+            visual?.ShowTargetIndicator(true);
+            yield return new WaitForSeconds(1.5f);
+            visual?.ShowTargetIndicator(false);
+
             Debug.Log($"[MonsterManager] {monster.MonsterData.MonsterName} attacks {target.HeroData.HeroType} for {monster.MonsterData.Attack} damage!");
             target.TakeDamage(monster.MonsterData.Attack);
             yield return new WaitForSeconds(0.5f);
