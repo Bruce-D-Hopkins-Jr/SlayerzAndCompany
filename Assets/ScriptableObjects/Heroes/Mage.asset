@@ -17,8 +17,8 @@ MonoBehaviour:
   maxHP: 55
   minAttack: 11
   maxAttack: 16
-  portrait: {fileID: 0}
-  heroPrefab: {fileID: 2498799951068624437, guid: 084d366434dc489418167b52dbb76ade, type: 3}
+  portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  heroPrefab: {fileID: 5268326057436847629, guid: fd59accd92a575943974733493a49080, type: 3}
   skillCards:
   - {fileID: 11400000, guid: 5d3c85f846d152b4796be6dbc78eac4a, type: 2}
   - {fileID: 11400000, guid: d4aa112ac964bd14a88a72da8348b5a8, type: 2}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4462b904cf756bd409f38dad4bd2f773, type: 3}
+  m_Name: Hauntclaw_1
+  m_EditorClassIdentifier: 
+  monsterType: 0
+  monsterStage: 0
+  monsterName: Hauntclaw (Foundling)
+  maxHP: 150
+  minAttack: 5
+  maxAttack: 10
+  portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  monsterPrefab: {fileID: 70619042586479864, guid: 305e15bbb498573458e8cad8092aad11, type: 3}

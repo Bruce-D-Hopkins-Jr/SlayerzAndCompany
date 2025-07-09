@@ -3,6 +3,7 @@ using UnityEngine;
 public class HeroCombatController : MonoBehaviour
 {
     [SerializeField] private Hero heroData;
+    [SerializeField] private HeroHUD hud;
     private HeroVisual visual;
     private int currentHP;
     private bool hasActed;
@@ -61,7 +62,11 @@ public class HeroCombatController : MonoBehaviour
         Debug.Log($"[HeroCombatController] {heroData.HeroType} takes {amount} damage. HP before: {currentHP}");
 
         currentHP -= amount;
+        currentHP = Mathf.Clamp(currentHP, 0, heroData.MaxHP);
         Debug.Log($"[HeroCombatController] HP after: {currentHP}");
+
+        hud = gameObject.GetComponentInChildren<HeroHUD>();
+        hud?.UpdateHealth(currentHP);
 
         if (currentHP <= 0)
         {
@@ -87,5 +92,10 @@ public class HeroCombatController : MonoBehaviour
         heroData = hero;
         currentHP = heroData.MaxHP;
         Debug.Log($"Set hero data for {heroData.HeroType}");
+
+        if (hud != null)
+        {
+            hud.Setup(hero.HeroType.ToString(), hero.Portrait, hero.MaxHP);
+        }
     }
 }

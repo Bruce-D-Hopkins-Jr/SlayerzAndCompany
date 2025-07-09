@@ -56,10 +56,17 @@ public class SpawnManager : MonoBehaviour
             {
                 GameObject instance = Instantiate(prefab, heroSpawnPoints[i]);
                 HeroCombatController combat = instance.GetComponent<HeroCombatController>();
+                HeroHUD hud = instance.GetComponentInChildren<HeroHUD>();
 
-                if(combat != null)
+                if(combat != null && hud != null)
                 {
+                    string heroName = heroes[i].HeroType.ToString();
+                    Sprite heroSprite = heroes[i].Portrait;
+                    int heroHP = heroes[i].MaxHP;
+
                     combat.SetHeroData(heroes[i]);
+                    hud.Setup(heroName, heroSprite, heroHP);
+                    hud.UpdateHealth(heroHP);
                 }
                 
                 Debug.Log($"Spawned Hero: {heroes[i].HeroType}");                

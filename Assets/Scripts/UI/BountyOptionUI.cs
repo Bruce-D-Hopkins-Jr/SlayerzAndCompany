@@ -8,11 +8,11 @@ public class BountyOptionUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bossNameText;
     [SerializeField] private Button selectButton;
 
-    private BossMonster bountyData;
+    private Monster bountyData;
 
-    public event Action<BossMonster> OnSelected;
+    public event Action<Monster> OnSelected;
 
-    public void Setup(BossMonster bounty)
+    public void Setup(Monster bounty)
     {
         bountyData = bounty;
         bossNameText.text = bounty.MonsterName;
@@ -27,5 +27,5 @@ public class BountyOptionUI : MonoBehaviour
         selectButton.interactable = false;
     }
 
-    public BossMonster BountyData => bountyData;
+    public Monster BountyData => bountyData;
 }

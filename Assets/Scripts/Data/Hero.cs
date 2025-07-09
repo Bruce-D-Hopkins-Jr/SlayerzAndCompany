@@ -6,7 +6,6 @@ public class Hero : ScriptableObject
 {
     [Header("Hero Info")]
     [SerializeField] private HeroType heroType;
-    [SerializeField] private string trait;
 
     [Header("Hero Stats")]
     [SerializeField] private int maxHP;
@@ -21,7 +20,6 @@ public class Hero : ScriptableObject
     [SerializeField] private List<SkillCard> skillCards;
 
     public HeroType HeroType => heroType;
-    public string Trait => trait;
     public int MaxHP => maxHP;
     public int Attack => Random.Range(minAttack, maxAttack + 1);
     public Sprite Portrait => portrait;

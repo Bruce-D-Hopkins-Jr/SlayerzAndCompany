@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class BountySelectionManager : MonoBehaviour
 {
-    [SerializeField] private List<BossMonster> allBounties;
+    [SerializeField] private List<Monster> allBounties;
     [SerializeField] private GameObject bountyOptionPrefab;
     [SerializeField] private Transform bountyContainer;
     [SerializeField] private Button confirmButton;
 
-    private BossMonster selectedBoss;
+    private Monster selectedBoss;
     private List<BountyOptionUI> bountyUIOptions = new();
 
     private void Start()
@@ -22,7 +22,7 @@ public class BountySelectionManager : MonoBehaviour
 
     private void GenerateBountyOptions()
     {
-        List<BossMonster> choices = new();
+        List<Monster> choices = new();
         int bossIndex = 0;
 
         while (choices.Count < 3)
@@ -44,7 +44,7 @@ public class BountySelectionManager : MonoBehaviour
         }
     }
 
-    private void HandleBountySelected(BossMonster bounty)
+    private void HandleBountySelected(Monster bounty)
     {
         if (selectedBoss != null) return;
 
@@ -67,5 +67,5 @@ public class BountySelectionManager : MonoBehaviour
         GameManager.Instance.LoadScene();
     }
 
-    public BossMonster GetSelectedBoss() => selectedBoss;
+    public Monster GetSelectedBoss() => selectedBoss;
 }

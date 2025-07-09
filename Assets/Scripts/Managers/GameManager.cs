@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public List<Hero> draftedHeroes = new();
-    public BossMonster selectedBounty;
+    public Monster selectedBounty;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         draftedHeroes = new List<Hero>(heroes);
     }
 
-    public void StoreBountySelection(BossMonster bounty)
+    public void StoreBountySelection(Monster bounty)
     {
         selectedBounty = bounty;
     }

@@ -1092,9 +1092,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allBounties:
-  - {fileID: 11400000, guid: 3775d443110a3f94b84503c463c93847, type: 2}
-  - {fileID: 11400000, guid: 2ff9e3886097aa04f957828384b25d04, type: 2}
-  - {fileID: 11400000, guid: 10523067ea1c7c5468d9a55e2554dba6, type: 2}
+  - {fileID: 11400000, guid: 17d0119b331737741bc3694333c69154, type: 2}
+  - {fileID: 11400000, guid: ea11452f91e8cfe4593ee1a911db42f1, type: 2}
+  - {fileID: 11400000, guid: 7525362e39aa92a46b455c55103adb17, type: 2}
   bountyOptionPrefab: {fileID: 5052581876789823542, guid: 6583e1e644c1cda4c99491c9c4265ff6, type: 3}
   bountyContainer: {fileID: 1059979445}
   confirmButton: {fileID: 1998698594}
