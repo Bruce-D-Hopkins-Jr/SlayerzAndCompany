@@ -19,4 +19,4 @@ MonoBehaviour:
   minAttack: 5
   maxAttack: 10
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  monsterPrefab: {fileID: 3198499350609119052, guid: 8d783a6df695d2448a5d0c39affe26dc, type: 3}
+  monsterPrefab: {fileID: 4972010780711622103, guid: 6fbf269b785575a44a1d5f5a97cad835, type: 3}

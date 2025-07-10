@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4462b904cf756bd409f38dad4bd2f773, type: 3}
   m_Name: Hauntclaw_3
   m_EditorClassIdentifier: 
-  monsterType: 0
+  monsterType: 1
   monsterStage: 2
   monsterName: Hauntclaw (Ascended)
   maxHP: 450

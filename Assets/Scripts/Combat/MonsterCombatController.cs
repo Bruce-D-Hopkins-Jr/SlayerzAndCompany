@@ -3,6 +3,7 @@ using UnityEngine;
 public class MonsterCombatController : MonoBehaviour 
 {
     [SerializeField] private Monster monsterData;
+    [SerializeField] private MonsterHUD hud;
     private int currentHP;
     private bool isAlive = true;
 
@@ -15,6 +16,9 @@ public class MonsterCombatController : MonoBehaviour
 
         currentHP -= amount;
         Debug.Log($"[MonsterCombatController] HP after: {currentHP}");
+
+        hud = gameObject.GetComponentInChildren<MonsterHUD>();
+        hud?.UpdateHealth(currentHP);
 
         if (currentHP <= 0)
         {

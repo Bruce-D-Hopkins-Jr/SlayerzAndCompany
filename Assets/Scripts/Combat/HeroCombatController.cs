@@ -92,10 +92,5 @@ public class HeroCombatController : MonoBehaviour
         heroData = hero;
         currentHP = heroData.MaxHP;
         Debug.Log($"Set hero data for {heroData.HeroType}");
-
-        if (hud != null)
-        {
-            hud.Setup(hero.HeroType.ToString(), hero.Portrait, hero.MaxHP);
-        }
     }
 }

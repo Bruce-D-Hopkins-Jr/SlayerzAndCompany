@@ -60,12 +60,12 @@ public class SpawnManager : MonoBehaviour
 
                 if(combat != null && hud != null)
                 {
-                    string heroName = heroes[i].HeroType.ToString();
+                    HeroType heroType = heroes[i].HeroType;
                     Sprite heroSprite = heroes[i].Portrait;
                     int heroHP = heroes[i].MaxHP;
 
                     combat.SetHeroData(heroes[i]);
-                    hud.Setup(heroName, heroSprite, heroHP);
+                    hud.Setup(heroType, heroSprite, heroHP);
                     hud.UpdateHealth(heroHP);
                 }
                 
@@ -87,10 +87,17 @@ public class SpawnManager : MonoBehaviour
             {
                 GameObject instance = Instantiate(prefab, monsterSpawnPoints[i]);
                 MonsterCombatController combat = instance.GetComponent<MonsterCombatController>();
+                MonsterHUD hud = instance.GetComponentInChildren<MonsterHUD>();
 
-                if (combat != null)
+                if (combat != null && hud != null)
                 {
+                    MonsterType monsterType = monsterList[i].MonsterType;
+                    Sprite monsterSprite = monsterList[i].Portrait;
+                    int monsterHP = monsterList[i].MaxHP;
+
                     combat.SetMonsterData(monsterList[i]);
+                    hud.Setup(monsterType, monsterSprite, monsterHP);
+                    hud.UpdateHealth(monsterHP);
                 }
                 
                 Debug.Log($"Spawned monster: {monsterList[i].MonsterName}");                

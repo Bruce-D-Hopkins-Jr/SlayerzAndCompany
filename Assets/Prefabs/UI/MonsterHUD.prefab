@@ -348,9 +348,9 @@ GameObject:
   - component: {fileID: 7604163834720104633}
   - component: {fileID: 6095490687351973514}
   - component: {fileID: 5571125852855837849}
-  - component: {fileID: 1360412769630643651}
+  - component: {fileID: 4667948848915661170}
   m_Layer: 5
-  m_Name: HeroHUD
+  m_Name: MonsterHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,8 +365,8 @@ RectTransform:
   m_GameObject: {fileID: 954044621308557907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.008, y: 0.008, z: 0.008}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1622969914338478045}
   - {fileID: 3966443842760629322}
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1360412769630643651
+--- !u!114 &4667948848915661170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 954044621308557907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ee13c28803c786448496c0ccb202451, type: 3}
+  m_Script: {fileID: 11500000, guid: a933b99bae39ebd479f1285a0d656923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 6658062951619511118}
