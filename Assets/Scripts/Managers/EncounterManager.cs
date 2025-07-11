@@ -77,10 +77,8 @@ public class EncounterManager : MonoBehaviour
             }
             else
             {
-                MoveHeroes();
-            }
-
-                PhaseManager.Instance.AdvancePhase();
+                Invoke(nameof(MoveHeroes), 2f);
+            }            
         }
     }
 
