@@ -15,7 +15,7 @@ public class BountyOptionUI : MonoBehaviour
     public void Setup(Monster bounty)
     {
         bountyData = bounty;
-        bossNameText.text = bounty.MonsterName;
+        bossNameText.text = bounty.MonsterType.ToString();
         selectButton.onClick.AddListener(() =>
         {
             OnSelected?.Invoke(bountyData);
