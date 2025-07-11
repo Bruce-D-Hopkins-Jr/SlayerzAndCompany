@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 45a1b346e8a60624481af9c61262370f
+guid: 97c6f3b93d6ecd941a054efb4eacc0a5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Priest_Idle
+      name: Scout_Run
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 190
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
