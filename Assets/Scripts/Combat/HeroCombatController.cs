@@ -44,6 +44,9 @@ public class HeroCombatController : MonoBehaviour
             return;
         }
 
+        HeroAnimator animator = GetComponent<HeroAnimator>();
+        animator?.PlayAttack();
+
         target.TakeDamage(heroData.Attack);
         Debug.Log($"[HeroCombatController] {heroData.HeroType} attacked for {heroData.Attack} damage!");
 
@@ -60,6 +63,9 @@ public class HeroCombatController : MonoBehaviour
     public void TakeDamage(int amount)
     {
         Debug.Log($"[HeroCombatController] {heroData.HeroType} takes {amount} damage. HP before: {currentHP}");
+
+        HeroAnimator animator = GetComponent<HeroAnimator>();
+        animator?.PlayHit();
 
         currentHP -= amount;
         currentHP = Mathf.Clamp(currentHP, 0, heroData.MaxHP);
