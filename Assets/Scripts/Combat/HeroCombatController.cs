@@ -44,6 +44,9 @@ public class HeroCombatController : MonoBehaviour
             return;
         }
 
+        HeroAnimator animator = GetComponent<HeroAnimator>();
+        animator?.PlayAttack();
+
         target.TakeDamage(heroData.Attack);
         Debug.Log($"[HeroCombatController] {heroData.HeroType} attacked for {heroData.Attack} damage!");
 
