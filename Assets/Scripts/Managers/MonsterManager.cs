@@ -44,6 +44,9 @@ public class MonsterManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             visual?.ShowTargetIndicator(false);
 
+            MonsterAnimator animator = monster.GetComponent<MonsterAnimator>();
+            animator?.PlayAttack();
+
             Debug.Log($"[MonsterManager] {monster.MonsterData.MonsterName} attacks {target.HeroData.HeroType} for {monster.MonsterData.Attack} damage!");
             target.TakeDamage(monster.MonsterData.Attack);
             yield return new WaitForSeconds(0.5f);
@@ -51,8 +54,8 @@ public class MonsterManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         //Temp
-        PhaseManager.Instance.SetCurrentPhase(GamePhase.SLAY);
-        PhaseManager.Instance.AdvancePhase();
+        //PhaseManager.Instance.SetCurrentPhase(GamePhase.SLAY);
+        //PhaseManager.Instance.AdvancePhase();
     }
 
     private HeroCombatController GetRandomAliveHero()
