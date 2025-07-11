@@ -64,6 +64,9 @@ public class HeroCombatController : MonoBehaviour
     {
         Debug.Log($"[HeroCombatController] {heroData.HeroType} takes {amount} damage. HP before: {currentHP}");
 
+        HeroAnimator animator = GetComponent<HeroAnimator>();
+        animator?.PlayHit();
+
         currentHP -= amount;
         currentHP = Mathf.Clamp(currentHP, 0, heroData.MaxHP);
         Debug.Log($"[HeroCombatController] HP after: {currentHP}");
