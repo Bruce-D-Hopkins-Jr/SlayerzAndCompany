@@ -40,6 +40,15 @@ public class EncounterManager : MonoBehaviour
                 heroes.position = targetPosition;
                 isMoving = false;
                 Debug.Log("[EncounterManager] HeroContainer arrived at new encounter position.");
+
+                var animators = heroes.GetComponentsInChildren<HeroAnimator>();
+                foreach (HeroAnimator animator in animators)
+                {
+                    if (animator != null)
+                    {
+                        animator.PlayRun(isMoving);
+                    }
+                }
             }
         }
     }
@@ -93,6 +102,15 @@ public class EncounterManager : MonoBehaviour
             targetPosition = heroPositions[currentEncounterIndex].position;
             isMoving = true;
             Debug.Log($"[EncounterManager] HeroContainer will move to {heroPositions[currentEncounterIndex].name}");
+
+            var animators = heroes.GetComponentsInChildren<HeroAnimator>();
+            foreach(HeroAnimator animator in animators)
+            {
+                if (animator != null)
+                {
+                    animator.PlayRun(isMoving);
+                }
+            }
         }
         else
         {
