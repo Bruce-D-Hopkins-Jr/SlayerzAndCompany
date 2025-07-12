@@ -481,7 +481,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3198499350608632684}
-  - component: {fileID: 3198499350616388748}
   m_Layer: 0
   m_Name: KingBeeVisual_1
   m_TagString: Untagged
@@ -518,28 +517,6 @@ Transform:
   - {fileID: 2389094584070199511}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3198499350616388748
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3198499350609119052}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 89cb33e715b9bc941b2fa1ccc233d8e1, type: 3}
-  m_Controller: {fileID: 9100000, guid: f816ebb7995d6014a9f90cdc756f9ed9, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3198499350609119054
 GameObject:
   m_ObjectHideFlags: 0
