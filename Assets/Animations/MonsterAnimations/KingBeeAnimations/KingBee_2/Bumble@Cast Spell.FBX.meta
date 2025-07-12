@@ -1,63 +1,81 @@
 fileFormatVersion: 2
-guid: 1b75aa002ce43284fb45f625c0427825
+guid: 03e02b7e3309556458d6d89f29cc9455
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Bee
+    100000: Bumble
     100002: //RootNode
     100004: Rig
-    100006: RigHead
-    100008: RigHeadGizmo
-    100010: RigJaw
-    100012: RigJawGizmo
-    100014: RigLArm1
-    100016: RigLArm1Gizmo
-    100018: RigNeck
-    100020: RigPelvis
-    100022: RigPelvisGizmo
-    100024: RigRArm1
-    100026: RigRArm1Gizmo
-    100028: RigRibcage
-    100030: RigRibcageGizmo
-    100032: RigSpine
-    100034: RigTail1
-    100036: RigTail1Gizmo
-    100038: RigTail2
-    100040: RigTail2Gizmo
-    100042: RigTail3
-    100044: RigTail3Gizmo
-    100046: RigTail4
-    100048: RigTail4Gizmo
-    400000: Bee
+    100006: RigFeelerL1
+    100008: RigFeelerL1Gizmo
+    100010: RigFeelerL2
+    100012: RigFeelerL2Gizmo
+    100014: RigFeelerL3
+    100016: RigFeelerL3Gizmo
+    100018: RigFeelerR1
+    100020: RigFeelerR1Gizmo
+    100022: RigFeelerR2
+    100024: RigFeelerR2Gizmo
+    100026: RigFeelerR3
+    100028: RigFeelerR3Gizmo
+    100030: RigHead
+    100032: RigHeadGizmo
+    100034: RigHub
+    100036: RigHubGizmo
+    100038: RigNeck
+    100040: RigTail1
+    100042: RigTail1Gizmo
+    100044: RigTail2
+    100046: RigTail2Gizmo
+    100048: RigTail3
+    100050: RigTail3Gizmo
+    100052: RigTail4
+    100054: RigTail4Gizmo
+    100056: RigTail5
+    100058: RigTail5Gizmo
+    100060: RigWingL
+    100062: RigWingLGizmo
+    100064: RigWingR
+    100066: RigWingRGizmo
+    400000: Bumble
     400002: //RootNode
     400004: Rig
-    400006: RigHead
-    400008: RigHeadGizmo
-    400010: RigJaw
-    400012: RigJawGizmo
-    400014: RigLArm1
-    400016: RigLArm1Gizmo
-    400018: RigNeck
-    400020: RigPelvis
-    400022: RigPelvisGizmo
-    400024: RigRArm1
-    400026: RigRArm1Gizmo
-    400028: RigRibcage
-    400030: RigRibcageGizmo
-    400032: RigSpine
-    400034: RigTail1
-    400036: RigTail1Gizmo
-    400038: RigTail2
-    400040: RigTail2Gizmo
-    400042: RigTail3
-    400044: RigTail3Gizmo
-    400046: RigTail4
-    400048: RigTail4Gizmo
-    2100000: 01 - Default
-    4300000: Bee
+    400006: RigFeelerL1
+    400008: RigFeelerL1Gizmo
+    400010: RigFeelerL2
+    400012: RigFeelerL2Gizmo
+    400014: RigFeelerL3
+    400016: RigFeelerL3Gizmo
+    400018: RigFeelerR1
+    400020: RigFeelerR1Gizmo
+    400022: RigFeelerR2
+    400024: RigFeelerR2Gizmo
+    400026: RigFeelerR3
+    400028: RigFeelerR3Gizmo
+    400030: RigHead
+    400032: RigHeadGizmo
+    400034: RigHub
+    400036: RigHubGizmo
+    400038: RigNeck
+    400040: RigTail1
+    400042: RigTail1Gizmo
+    400044: RigTail2
+    400046: RigTail2Gizmo
+    400048: RigTail3
+    400050: RigTail3Gizmo
+    400052: RigTail4
+    400054: RigTail4Gizmo
+    400056: RigTail5
+    400058: RigTail5Gizmo
+    400060: RigWingL
+    400062: RigWingLGizmo
+    400064: RigWingR
+    400066: RigWingRGizmo
+    2100000: 07 - Default
+    4300000: Bumble
     7400000: Take 001
     9500000: //RootNode
-    13700000: Bee
+    13700000: Bumble
   externalObjects: {}
   materials:
     importMaterials: 0

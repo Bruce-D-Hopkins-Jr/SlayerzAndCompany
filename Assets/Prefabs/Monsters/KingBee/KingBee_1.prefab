@@ -88,6 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterData: {fileID: 0}
   hud: {fileID: 0}
+  hitDelay: 0.5
 --- !u!114 &4572118685255087929
 MonoBehaviour:
   m_ObjectHideFlags: 0

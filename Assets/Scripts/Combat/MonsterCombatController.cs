@@ -4,6 +4,7 @@ public class MonsterCombatController : MonoBehaviour
 {
     [SerializeField] private Monster monsterData;
     [SerializeField] private MonsterHUD hud;
+    [SerializeField] private float hitDelay;
     private int currentHP;
     private bool isAlive = true;
 
@@ -13,6 +14,9 @@ public class MonsterCombatController : MonoBehaviour
     public void TakeDamage(int amount)
     {
         Debug.Log($"[MonsterCombatController] {monsterData.MonsterName} takes {amount} damage. HP before: {currentHP}");
+
+        MonsterAnimator animator = GetComponent<MonsterAnimator>();
+        animator?.PlayHit(hitDelay);
 
         currentHP -= amount;
         Debug.Log($"[MonsterCombatController] HP after: {currentHP}");

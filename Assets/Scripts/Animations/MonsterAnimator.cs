@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MonsterAnimator : MonoBehaviour
@@ -8,5 +9,11 @@ public class MonsterAnimator : MonoBehaviour
     private const string HIT = "HIT";
 
     public void PlayAttack() => animator.SetTrigger(ATTACK);
-    public void PlayHit() => animator.SetTrigger(HIT);
+    public void PlayHit(float timeDelay) => StartCoroutine(DelayHit(timeDelay));
+
+    private IEnumerator DelayHit(float timeDelay)
+    {
+        yield return new WaitForSeconds(timeDelay);
+        animator.SetTrigger(HIT);
+    }
 }
