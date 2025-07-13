@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479601207170100490}
+  - component: {fileID: 7760722932562963398}
+  - component: {fileID: 5892375945185310647}
   - component: {fileID: 1218689891140550296}
   - component: {fileID: 8922609740807554184}
   - component: {fileID: 7174088348150060358}
@@ -37,6 +39,41 @@ Transform:
   - {fileID: 3709614606526879198}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7760722932562963398
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70619042586479864}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: db13331a9ade1df46a30c1179d2f4539, type: 3}
+  m_Controller: {fileID: 9100000, guid: f21c3a8e35aedfd4a8b8f8a922719c3e, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5892375945185310647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70619042586479864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d54034564379b44bf25ca69ecf94f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7760722932562963398}
 --- !u!114 &1218689891140550296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterData: {fileID: 0}
   hud: {fileID: 0}
+  hitDelay: 0
 --- !u!114 &8922609740807554184
 MonoBehaviour:
   m_ObjectHideFlags: 0
