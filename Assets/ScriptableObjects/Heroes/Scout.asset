@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroType: 1
   maxHP: 60
-  minAttack: 49
-  maxAttack: 51
+  minAttack: 9
+  maxAttack: 14
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   heroPrefab: {fileID: 1700360962909021933, guid: cc01cf9b46a932e438ce713db6188080, type: 3}
   skillCards:
