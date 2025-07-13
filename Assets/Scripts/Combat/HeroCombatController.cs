@@ -53,10 +53,13 @@ public class HeroCombatController : MonoBehaviour
         hasActed = true;
         visual?.SetRingState(HeroRingState.Used);
 
-        foreach (var monster in EncounterManager.Instance.GetActiveEncounterMonsters())
+        if (EncounterManager.Instance.GetActiveEncounterMonsters().Count > 0)
         {
-            var visual = monster.GetComponent<MonsterVisual>();
-            visual?.ShowTargetIndicator(false);
+            foreach (var monster in EncounterManager.Instance.GetActiveEncounterMonsters())
+            {
+                var visual = monster.GetComponent<MonsterVisual>();
+                visual?.ShowTargetIndicator(false);
+            }
         }
     }
 
