@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6442587912803674038}
+  - component: {fileID: 8069626467457956550}
+  - component: {fileID: 3897797521999809004}
   - component: {fileID: 4351941035045610518}
   - component: {fileID: 5331946490685550923}
   - component: {fileID: 5717802406877437271}
@@ -37,6 +39,41 @@ Transform:
   - {fileID: 6098279852862399386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8069626467457956550
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957934930987878976}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 23257a295c7a2e74ea3c91fc781add7b, type: 3}
+  m_Controller: {fileID: 9100000, guid: 53f8db8248e9655449c1f022d11ab091, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3897797521999809004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957934930987878976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d54034564379b44bf25ca69ecf94f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8069626467457956550}
 --- !u!114 &4351941035045610518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterData: {fileID: 0}
   hud: {fileID: 0}
+  hitDelay: 0
 --- !u!114 &5331946490685550923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,10 +360,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: TyrantulaVisual_2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8042737579546936811, guid: 20ab8450d1ef5f84298c02971f34ef71, type: 3}
-    - {fileID: 5353479436824353785, guid: 20ab8450d1ef5f84298c02971f34ef71, type: 3}
-    - {fileID: 5621306449557736032, guid: 20ab8450d1ef5f84298c02971f34ef71, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
