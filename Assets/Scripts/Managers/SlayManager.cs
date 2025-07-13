@@ -65,15 +65,17 @@ public class SlayManager : MonoBehaviour
             Debug.Log("This hero has already acted this turn");
         }
         else
-        {
-            
+        {            
             selectedHero.GetComponent<HeroVisual>()?.SetRingState(HeroRingState.Selected);
 
-            foreach (var monster in EncounterManager.Instance.GetActiveEncounterMonsters())
+            if (EncounterManager.Instance.GetActiveEncounterMonsters().Count != 0)
             {
-                var visual = monster.GetComponent<MonsterVisual>();
-                visual?.ShowTargetIndicator(true);
-            }
+                foreach (var monster in EncounterManager.Instance.GetActiveEncounterMonsters())
+                {
+                    var visual = monster.GetComponent<MonsterVisual>();
+                    visual?.ShowTargetIndicator(true);
+                }
+            }            
         }        
 
         Debug.Log($"[SlayManager] Selected hero: {hero.HeroData.HeroType}");

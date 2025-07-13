@@ -13,8 +13,7 @@ public class EncounterManager : MonoBehaviour
     private Vector3 targetPosition;
     private bool isMoving = false;
     private int currentEncounterIndex = 0;
-
-    public Transform CurrentEncounterRoot => encounters[currentEncounterIndex];
+    
     public int CurrentEncounterIndex => currentEncounterIndex;
     public int TotalEncounters => encounters.Count;
 
@@ -53,13 +52,25 @@ public class EncounterManager : MonoBehaviour
         }
     }
 
+    public Transform CurrentEncounterRoot()
+    {
+        if (currentEncounterIndex >= 0 && currentEncounterIndex < encounters.Count)
+        {
+            return encounters[currentEncounterIndex];
+        }
+
+        return null;
+    }
+
     public List<MonsterCombatController> GetActiveEncounterMonsters()
     {
-        var monsters = new List<MonsterCombatController>(
-            CurrentEncounterRoot.GetComponentsInChildren<MonsterCombatController>()
-        );
+        if (CurrentEncounterRoot() == null) return new List<MonsterCombatController>();
 
-        return monsters.FindAll(m => m.IsAlive);
+        var monsters = new List<MonsterCombatController>(
+            CurrentEncounterRoot().GetComponentsInChildren<MonsterCombatController>()
+        );
+        
+        return monsters.FindAll(m => m.IsAlive);    
     }
 
     public void NotifyMonsterDefeated()
@@ -69,7 +80,7 @@ public class EncounterManager : MonoBehaviour
             Debug.Log($"[EncounterManager] Encounter {CurrentEncounterIndex} is complete!");
             AdvanceEncounter();
 
-            if (AllEncountersCleared())
+            if (currentEncounterIndex > encounters.Count - 1)
             {
                 Debug.Log("[EncounterManager] All encounters cleared! You win!");
                 // Optionally trigger win condition here
@@ -84,13 +95,11 @@ public class EncounterManager : MonoBehaviour
 
     public void AdvanceEncounter()
     {
-        currentEncounterIndex++;
-        Debug.Log($"[EncounterManager] Advancing to encounter {currentEncounterIndex}");
-    }
-
-    public bool AllEncountersCleared()
-    {
-        return currentEncounterIndex >= encounters.Count;
+        if (currentEncounterIndex <= encounters.Count - 1)
+        {
+            currentEncounterIndex++;
+            Debug.Log($"[EncounterManager] Advancing to encounter {currentEncounterIndex}");
+        }
     }
 
     public void MoveHeroes()
