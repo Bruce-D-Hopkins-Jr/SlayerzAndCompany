@@ -54,8 +54,8 @@ public class MonsterManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         //Temp
-        //PhaseManager.Instance.SetCurrentPhase(GamePhase.SLAY);
-        //PhaseManager.Instance.AdvancePhase();
+        PhaseManager.Instance.SetCurrentPhase(GamePhase.SLAY);
+        PhaseManager.Instance.AdvancePhase();
     }
 
     private HeroCombatController GetRandomAliveHero()

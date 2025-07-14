@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   heroType: 0
-  trait: 
   maxHP: 75
   minAttack: 7
   maxAttack: 12

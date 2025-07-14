@@ -20,6 +20,7 @@ public class PhaseManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (CurrentPhase == GamePhase.SLAY)
@@ -35,6 +36,7 @@ public class PhaseManager : MonoBehaviour
                 CurrentPhase = GamePhase.SLAY;
             }
         }
+        */
     }
 
     private void OnEnable()
@@ -76,6 +78,12 @@ public class PhaseManager : MonoBehaviour
                 StartMonsterPhase();
                 CurrentPhase = GamePhase.MONSTER;
                 break;
+        }
+
+        PhaseUI ui = FindAnyObjectByType<PhaseUI>();
+        if (ui != null)
+        {
+            ui.UpdateUI(CurrentPhase);
         }
     }
 
