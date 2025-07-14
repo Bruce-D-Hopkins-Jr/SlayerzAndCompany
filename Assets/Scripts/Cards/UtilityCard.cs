@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UtilityCard", menuName = "Cards/UtilityCard")]
 public class UtilityCard : Card
 {
-    [SerializeField, TextArea] private string effect;
+    [SerializeField, TextArea] private string description;
 
-    public string Effect => effect;
+    public string Description => description;
 }

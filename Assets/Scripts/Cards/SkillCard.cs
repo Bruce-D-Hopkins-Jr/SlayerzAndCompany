@@ -4,8 +4,8 @@ using UnityEngine;
 public class SkillCard : Card
 {
     [SerializeField] private HeroType heroType;
-    [SerializeField, TextArea] private string effect;
+    [SerializeField, TextArea] private string description;
 
     public HeroType HeroType => heroType;
-    public string Effect => effect;
+    public string Description => description;
 }
