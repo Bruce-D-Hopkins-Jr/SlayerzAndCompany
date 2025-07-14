@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519f7d0e6173a854a861d092be69d799, type: 3}
   m_Name: PhantomStrike
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Phantom Strike
   art: {fileID: 0}
-  cardType: 0
+  cardType: 1
   heroType: 1
-  effect: Deal 5 damage (inflict vulnerable)
+  effect: Deal 5-10 damage, become camouflaged.

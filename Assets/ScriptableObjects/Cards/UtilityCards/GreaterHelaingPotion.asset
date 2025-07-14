@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 573a03117c82ef646833e17581a815ef, type: 3}
-  m_Name: Antidote
+  m_Name: GreaterHelaingPotion
   m_EditorClassIdentifier: 
-  cardName: Antidote
+  cardName: Greater Healing Potion
   art: {fileID: 0}
   cardType: 0
-  effect: Cures heroes from ailments
+  effect: Heals target for 10-15 HP

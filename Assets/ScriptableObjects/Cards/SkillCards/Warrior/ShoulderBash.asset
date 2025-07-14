@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519f7d0e6173a854a861d092be69d799, type: 3}
   m_Name: ShoulderBash
   m_EditorClassIdentifier: 
-  cardName: Shoulder Bash
+  cardName: Block
   art: {fileID: 0}
   cardType: 1
   heroType: 0
-  effect: Deal 5 damage to target enemy
+  effect: Prevent damage during enemies next turn.

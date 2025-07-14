@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 519f7d0e6173a854a861d092be69d799, type: 3}
-  m_Name: AMBUSH
+  m_Name: Ambush
   m_EditorClassIdentifier: 
-  cardName: AMBUSH!!
+  cardName: Ambush!
   art: {fileID: 0}
-  cardType: 0
-  heroType: 0
-  effect: Deal 10 damage to target. Deal double damage if you took no damage during
-    the enemies last turn.
+  cardType: 1
+  heroType: 1
+  effect: Deal 10 damage to target. Deal 20 damage if you took no damage during the
+    enemies last turn.

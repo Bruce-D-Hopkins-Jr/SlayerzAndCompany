@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 519f7d0e6173a854a861d092be69d799, type: 3}
-  m_Name: ICAST
+  m_Name: ICast
   m_EditorClassIdentifier: 
-  cardName: I CAST!!
+  cardName: I Cast
   art: {fileID: 0}
-  cardType: 0
-  heroType: 0
-  effect: Cast a devastating spell hitting all enemies for 25 damage. (Deal elemental
-    damage if channeled)
+  cardType: 1
+  heroType: 2
+  effect: Cast a devastating spell for 20 damage. (Can only use if elemental energy
+    has been channeled)
