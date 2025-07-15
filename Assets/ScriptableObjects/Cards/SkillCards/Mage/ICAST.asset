@@ -16,5 +16,4 @@ MonoBehaviour:
   art: {fileID: 0}
   cardType: 1
   heroType: 2
-  effect: Cast a devastating spell for 20 damage. (Can only use if elemental energy
-    has been channeled)
+  description: 

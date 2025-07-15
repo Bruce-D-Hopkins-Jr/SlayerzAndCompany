@@ -16,5 +16,4 @@ MonoBehaviour:
   art: {fileID: 0}
   cardType: 1
   heroType: 1
-  effect: Deal 10 damage to target. Deal 20 damage if you took no damage during the
-    enemies last turn.
+  description: 
