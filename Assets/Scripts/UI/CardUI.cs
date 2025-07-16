@@ -1,12 +1,25 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class CardUI : MonoBehaviour
+public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private Sprite cardArtImage;
     [SerializeField] private TextMeshProUGUI cardNameText;    
     [SerializeField] private TextMeshProUGUI cardDescriptionText;
+
+    private Canvas canvas;
+    private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
+    private Transform originalParent;
+
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        canvas = GetComponentInParent<Canvas>();
+    }
 
     public void Setup(Card card)
     {
@@ -27,5 +40,24 @@ public class CardUI : MonoBehaviour
                 cardDescriptionText.text = "";
                 break;
         }
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        originalParent = transform.parent;
+        transform.SetParent(canvas.transform); // Move to top-level so it can drag freely
+        canvasGroup.blocksRaycasts = false; // So raycasts can hit drop zones
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        transform.SetParent(originalParent);
+        rectTransform.anchoredPosition = Vector2.zero;
+        canvasGroup.blocksRaycasts = true;
     }
 }

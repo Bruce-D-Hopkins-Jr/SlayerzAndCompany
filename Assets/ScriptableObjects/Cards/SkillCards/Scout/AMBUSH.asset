@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 519f7d0e6173a854a861d092be69d799, type: 3}
-  m_Name: Ambush
+  m_Name: AMBUSH
   m_EditorClassIdentifier: 
   cardName: Ambush!
   art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}

@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 5507143611246210726}
   - component: {fileID: 8456392868326259533}
   - component: {fileID: 6404436966051491305}
+  - component: {fileID: 5306972808654762693}
   m_Layer: 5
   m_Name: CardUI
   m_TagString: Untagged
@@ -169,6 +170,18 @@ MonoBehaviour:
   cardArtImage: {fileID: 0}
   cardNameText: {fileID: 3984055616811284467}
   cardDescriptionText: {fileID: 1268918987793713346}
+--- !u!225 &5306972808654762693
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6460147615040674840}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8253144338288017072
 GameObject:
   m_ObjectHideFlags: 0
