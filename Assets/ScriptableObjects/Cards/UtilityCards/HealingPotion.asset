@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HealingPotion
   m_EditorClassIdentifier: 
   cardName: Healing Potion
-  art: {fileID: 0}
+  art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 0
-  effect: Heals target hero for 5-10 hp
+  description: Heal targeted ally for 5 HP.

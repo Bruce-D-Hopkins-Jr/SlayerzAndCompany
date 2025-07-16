@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Camouflage
   m_EditorClassIdentifier: 
   cardName: Camouflage
-  art: {fileID: 0}
+  art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 1
-  effect: Avoid all damage from enemies during their next turn.
+  description: Ignore all damage from monster(s) during the MONSTER phase.

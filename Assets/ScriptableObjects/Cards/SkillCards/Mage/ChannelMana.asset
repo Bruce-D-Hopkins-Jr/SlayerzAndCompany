@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChannelMana
   m_EditorClassIdentifier: 
   cardName: Channel Mana
-  art: {fileID: 0}
+  art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 2
-  effect: Choose to channel one of three types of elemental energy.
+  description: 'Channel a random elemental spark from a monster. (MAX: 2)'

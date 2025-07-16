@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Taunt
   m_EditorClassIdentifier: 
   cardName: Taunt
-  art: {fileID: 0}
+  art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 0
-  effect: Have all enemies target you during their turn.
+  description: All monster(s) target the Warrior during the MONSTER phase.

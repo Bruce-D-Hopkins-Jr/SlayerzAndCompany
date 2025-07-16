@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Reinforcements_I
   m_EditorClassIdentifier: 
   cardName: Reinforcements I
-  art: {fileID: 0}
+  art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 0
-  effect: Draw 1 card
+  description: Draw 1 card.

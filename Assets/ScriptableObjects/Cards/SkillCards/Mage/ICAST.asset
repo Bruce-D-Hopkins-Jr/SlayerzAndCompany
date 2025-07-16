@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ICast
   m_EditorClassIdentifier: 
   cardName: I Cast
-  art: {fileID: 0}
+  art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 2
-  description: 
+  description: Deal 10 damage for each elemental spark Mage has.

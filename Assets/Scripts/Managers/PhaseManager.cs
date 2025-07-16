@@ -5,7 +5,7 @@ public class PhaseManager : MonoBehaviour
 {
     public static PhaseManager Instance;
 
-    public GamePhase CurrentPhase { get; private set; } = GamePhase.SLAY;
+    public GamePhase CurrentPhase { get; private set; } = GamePhase.DRAW;
 
     private void Start()
     {
@@ -64,7 +64,9 @@ public class PhaseManager : MonoBehaviour
         {
             case GamePhase.DRAW:
                 StartDrawPhase();
-                CurrentPhase = GamePhase.DRAW;
+                //Change to GamePhase.PLAY when implementing PLAY phase
+                CurrentPhase = GamePhase.SLAY;
+                AdvancePhase();
                 break;
             case GamePhase.PLAY:
                 StartPlayPhase();
@@ -91,6 +93,16 @@ public class PhaseManager : MonoBehaviour
     {
         Debug.Log("Starting DRAW phase.");
         // Notify systems to draw until 5 cards, for example
+
+        HandManager handManager = FindAnyObjectByType<HandManager>();
+        if (handManager == null)
+        {
+            Debug.LogError("HandManager not found in scene.");
+            return;
+        }
+
+        // Draw cards until hand is full
+        handManager.DrawUntilFull();
     }
 
     private void StartPlayPhase()

@@ -36,6 +36,7 @@ public class GameOverUIManager : MonoBehaviour
 
     private void RestartRun()
     {
+        DeckManager.Instance.ClearAndRebuildDeck();
         SceneManager.LoadScene("TestScene");
     }
 

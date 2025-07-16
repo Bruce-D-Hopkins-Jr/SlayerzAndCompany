@@ -54,7 +54,7 @@ public class MonsterManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         //Temp
-        PhaseManager.Instance.SetCurrentPhase(GamePhase.SLAY);
+        PhaseManager.Instance.SetCurrentPhase(GamePhase.DRAW);
         PhaseManager.Instance.AdvancePhase();
     }
 

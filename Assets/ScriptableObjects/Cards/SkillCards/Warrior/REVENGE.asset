@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Revenge
   m_EditorClassIdentifier: 
   cardName: Revenge!
-  art: {fileID: 0}
+  art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 0
-  effect: Deal double the amount of damage you took during your opponents turn. Deal
-    TRIPLE if one of your squadmates perished this encounter.
+  description: Deal 15 damage to target monster.

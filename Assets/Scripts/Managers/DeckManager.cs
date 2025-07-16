@@ -5,55 +5,55 @@ public class DeckManager : MonoBehaviour
 {
     [SerializeField] private List<UtilityCard> baseDeckCards;
 
-    private List<Card> deck = new();
-    private List<Card> discardPile = new();
-    private List<Card> hand = new();
-    private const int HAND_LIMIT = 5;
+    [SerializeField] private List<Card> deck = new();
+    [SerializeField] private List<Card> discardPile = new();
+
+    public static DeckManager Instance { get; private set; }   
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void BuildDeck(List<Hero> selectedHeroes)
     {
         deck = DeckBuilder.BuildDeck(selectedHeroes, baseDeckCards);
         discardPile.Clear();
-        hand.Clear();
         Debug.Log("Deck built and shuffled.");
+    }       
+
+    public void ResetDeck()
+    {
+        deck.Clear();
+        discardPile.Clear();
     }
 
-    public void DrawCards(int count)
+    public List<Card> Draw(int count)
     {
+        List<Card> drawn = new();
+
         for (int i = 0; i < count; i++)
         {
-            if (hand.Count >= HAND_LIMIT)
-            {
-                Debug.Log("Hand is full!");
-                break;
-            }
-
             if (deck.Count == 0)
             {
-                if (discardPile.Count == 0)
-                {
-                    Debug.Log("No cards left to draw.");
-                    break;
-                }
+                if (discardPile.Count == 0) break;
                 ReshuffleDiscardIntoDeck();
             }
 
-            var card = deck[0];
+            if (deck.Count == 0) break; // Still empty after reshuffle
+
+            drawn.Add(deck[0]);
             deck.RemoveAt(0);
-            hand.Add(card);
         }
 
-        Debug.Log($"Hand has {hand.Count} cards.");
-    }
-
-    public void DiscardCard(Card card)
-    {
-        if (hand.Contains(card))
-        {
-            hand.Remove(card);
-            discardPile.Add(card);
-            Debug.Log($"{card.name} discarded.");
-        }
+        return drawn;
     }
 
     private void ReshuffleDiscardIntoDeck()
@@ -69,12 +69,18 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    public void ResetDeck()
+    public void ClearAndRebuildDeck()
     {
         deck.Clear();
         discardPile.Clear();
-        hand.Clear();
+
+        // Rebuild from heroes you previously stored
+        BuildDeck(GameManager.Instance.draftedHeroes);
     }
 
-    public List<Card> GetHand() => new(hand);
+    public void AddToDiscard(Card card)
+    {
+        discardPile.Add(card);
+    }
+
 }

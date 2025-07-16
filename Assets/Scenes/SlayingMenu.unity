@@ -325,16 +325,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDeckCards:
-  - {fileID: 11400000, guid: 3dac1315486d15348971cc3c9895095b, type: 2}
-  - {fileID: 11400000, guid: 2e14f7e86bcbe6440942219dcff02a92, type: 2}
-  - {fileID: 11400000, guid: a36b059bfe5d89f4291cbe28e4f31a64, type: 2}
   - {fileID: 11400000, guid: 1933a3e9c175ea04d97e83cf4c4d6cac, type: 2}
-  - {fileID: 11400000, guid: 0a2a26ea1d741ca4d9c913d163203980, type: 2}
-  - {fileID: 11400000, guid: 0a752e16206612f4fb066ee50f36e00d, type: 2}
   - {fileID: 11400000, guid: 97508518e7252ef4080f60afe52ad051, type: 2}
+  - {fileID: 11400000, guid: 3dac1315486d15348971cc3c9895095b, type: 2}
+  - {fileID: 11400000, guid: 0a752e16206612f4fb066ee50f36e00d, type: 2}
   - {fileID: 11400000, guid: 9ebb428b4d576ad419e75ed855307682, type: 2}
   - {fileID: 11400000, guid: cdc04ce34f14c3b42bb6235c186857d5, type: 2}
-  - {fileID: 11400000, guid: b8eddb002fcf5514a9aa73e0b47db5be, type: 2}
+  - {fileID: 11400000, guid: 1933a3e9c175ea04d97e83cf4c4d6cac, type: 2}
+  - {fileID: 11400000, guid: 97508518e7252ef4080f60afe52ad051, type: 2}
+  - {fileID: 11400000, guid: 3dac1315486d15348971cc3c9895095b, type: 2}
+  - {fileID: 11400000, guid: 0a752e16206612f4fb066ee50f36e00d, type: 2}
+  - {fileID: 11400000, guid: 9ebb428b4d576ad419e75ed855307682, type: 2}
+  - {fileID: 11400000, guid: cdc04ce34f14c3b42bb6235c186857d5, type: 2}
 --- !u!1 &266709970
 GameObject:
   m_ObjectHideFlags: 0
