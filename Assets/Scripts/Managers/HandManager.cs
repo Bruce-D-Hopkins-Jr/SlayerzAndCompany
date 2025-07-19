@@ -9,11 +9,23 @@ public class HandManager : MonoBehaviour
 
     [Header("Config")]
     [SerializeField] private int maxHandSize = 5;
-
     [SerializeField] private List<Card> currentHand = new();
+
+    public static HandManager Instance;
 
     public int HandSize => currentHand.Count;
     public List<Card> GetCurrentHand() => new(currentHand);
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     public void DrawUntilFull()
     {
@@ -78,5 +90,27 @@ public class HandManager : MonoBehaviour
         {
             CreateCardUI(card);
         }
+    }
+
+    public void TryPlayCard(CardUI cardUI, MonoBehaviour target)
+    {
+        Card card = cardUI.GetCard();
+
+        if (!currentHand.Contains(card))
+        {
+            Debug.LogWarning("[HandManager] Tried to play a card not in hand.");
+            return;
+        }
+
+        // 1. Remove card data from logic
+        currentHand.Remove(card);
+
+        // 2. Add it to the discard pile
+        DeckManager.Instance.AddToDiscard(card);
+
+        // 3. Destroy the specific UI card that was dropped
+        Destroy(cardUI.gameObject);
+
+        Debug.Log($"[HandManager] Played and discarded: {card.CardName}");
     }
 }

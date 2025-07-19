@@ -13,6 +13,9 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Transform originalParent;
+    private Card card;
+
+    public Card GetCard() => card;
 
     private void Awake()
     {
@@ -23,6 +26,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void Setup(Card card)
     {
+        this.card = card;
         cardArtImage = card.Art;
         cardNameText.text = card.CardName;
 

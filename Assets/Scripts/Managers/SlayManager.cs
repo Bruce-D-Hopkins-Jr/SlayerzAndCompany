@@ -4,6 +4,8 @@ public class SlayManager : MonoBehaviour
 {
     private HeroCombatController selectedHero;
 
+    public static SlayManager Instance;
+
     private void OnEnable()
     {
         PhaseManagerEvents.OnSlayPhaseStarted += ResetSlayState;
@@ -12,6 +14,17 @@ public class SlayManager : MonoBehaviour
     private void OnDisable()
     {
         PhaseManagerEvents.OnSlayPhaseStarted -= ResetSlayState;
+    }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
     }
 
     private void Update()
@@ -84,5 +97,19 @@ public class SlayManager : MonoBehaviour
     private void ResetSlayState()
     {
         selectedHero = null;
+    }
+
+    public void CheckForSlayPhaseEnd()
+    {
+        var allHeroes = FindObjectsByType<HeroCombatController>(FindObjectsSortMode.None);
+        foreach (var hero in allHeroes)
+        {
+            if (hero.IsAlive && !hero.HasActed)
+                return; // Someone can still act
+        }
+
+        Debug.Log("[SlayManager] All heroes have acted. Ending SLAY phase...");
+        PhaseManager.Instance.SetCurrentPhase(GamePhase.MONSTER); // Move to MONSTER phase
+        PhaseManager.Instance.AdvancePhase();
     }
 }

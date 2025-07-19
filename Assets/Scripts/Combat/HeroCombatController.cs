@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class HeroCombatController : MonoBehaviour
+public class HeroCombatController : MonoBehaviour, IDropHandler
 {
     [SerializeField] private Hero heroData;
     [SerializeField] private HeroHUD hud;
@@ -53,6 +54,8 @@ public class HeroCombatController : MonoBehaviour
         hasActed = true;
         visual?.SetRingState(HeroRingState.Used);
 
+        SlayManager.Instance.CheckForSlayPhaseEnd();
+
         if (EncounterManager.Instance.GetActiveEncounterMonsters().Count > 0)
         {
             foreach (var monster in EncounterManager.Instance.GetActiveEncounterMonsters())
@@ -101,5 +104,13 @@ public class HeroCombatController : MonoBehaviour
         heroData = hero;
         currentHP = heroData.MaxHP;
         Debug.Log($"Set hero data for {heroData.HeroType}");
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        var cardUI = eventData.pointerDrag?.GetComponent<CardUI>();
+        if (cardUI == null) return;
+
+        HandManager.Instance.TryPlayCard(cardUI, this);
     }
 }

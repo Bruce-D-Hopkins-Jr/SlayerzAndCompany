@@ -5661,6 +5661,7 @@ MonoBehaviour:
   handContainer: {fileID: 895105721}
   cardUIPrefab: {fileID: 6460147615040674840, guid: e3fac5c0419d5314193bc3b8c6acbcf0, type: 3}
   maxHandSize: 5
+  currentHand: []
 --- !u!4 &1117339588
 Transform:
   m_ObjectHideFlags: 0
@@ -10016,6 +10017,7 @@ GameObject:
   - component: {fileID: 1985256679}
   - component: {fileID: 1985256682}
   - component: {fileID: 1985256683}
+  - component: {fileID: 1985256684}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10175,6 +10177,22 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1985256684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985256678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1001 &2007302818
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MonsterCombatController : MonoBehaviour 
+public class MonsterCombatController : MonoBehaviour, IDropHandler
 {
     [SerializeField] private Monster monsterData;
     [SerializeField] private MonsterHUD hud;
@@ -43,5 +44,13 @@ public class MonsterCombatController : MonoBehaviour
         monsterData = monster;
         currentHP = monsterData.MaxHP;
         Debug.Log($"Set monster data for {monsterData.MonsterName}");
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        var cardUI = eventData.pointerDrag?.GetComponent<CardUI>();
+        if (cardUI == null) return;
+
+        HandManager.Instance.TryPlayCard(cardUI, this);
     }
 }
