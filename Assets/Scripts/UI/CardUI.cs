@@ -14,6 +14,8 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private CanvasGroup canvasGroup;
     private Transform originalParent;
     private Card card;
+    private Vector3 originalScale;
+    private float originalAlpha;
 
     public Card GetCard() => card;
 
@@ -50,6 +52,12 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         originalParent = transform.parent;
         transform.SetParent(canvas.transform); // Move to top-level so it can drag freely
+
+        originalScale = transform.localScale;
+        originalAlpha = canvasGroup.alpha;
+
+        transform.localScale = originalScale * 0.6f;        // Shrink
+        canvasGroup.alpha = 0.3f;
         canvasGroup.blocksRaycasts = false; // So raycasts can hit drop zones
     }
 
@@ -62,6 +70,9 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = Vector2.zero;
+
+        transform.localScale = originalScale;              // Reset scale
+        canvasGroup.alpha = originalAlpha;                 // Reset transparency
         canvasGroup.blocksRaycasts = true;
     }
 }
