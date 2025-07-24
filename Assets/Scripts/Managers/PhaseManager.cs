@@ -65,7 +65,7 @@ public class PhaseManager : MonoBehaviour
             case GamePhase.DRAW:
                 StartDrawPhase();
                 //Change to GamePhase.PLAY when implementing PLAY phase
-                CurrentPhase = GamePhase.SLAY;
+                CurrentPhase = GamePhase.PLAY;
                 AdvancePhase();
                 break;
             case GamePhase.PLAY:

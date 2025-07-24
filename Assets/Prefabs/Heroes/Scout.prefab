@@ -193,6 +193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SelectionRing
       objectReference: {fileID: 0}
+    - target: {fileID: 3853464650872751107, guid: 47e00103c2eaeae498deffd6bdfa85fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

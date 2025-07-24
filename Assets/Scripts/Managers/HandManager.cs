@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class HandManager : MonoBehaviour
@@ -104,12 +104,16 @@ public class HandManager : MonoBehaviour
 
         // 1. Remove card data from logic
         currentHand.Remove(card);
-
         // 2. Add it to the discard pile
         DeckManager.Instance.AddToDiscard(card);
-
         // 3. Destroy the specific UI card that was dropped
         Destroy(cardUI.gameObject);
+
+        if (PhaseManager.Instance.CurrentPhase == GamePhase.PLAY && currentHand.Count == 0)
+        {
+            PhaseManager.Instance.SetCurrentPhase(GamePhase.SLAY);
+            PhaseManager.Instance.AdvancePhase(); // PLAY → SLAY
+        }
 
         Debug.Log($"[HandManager] Played and discarded: {card.CardName}");
     }

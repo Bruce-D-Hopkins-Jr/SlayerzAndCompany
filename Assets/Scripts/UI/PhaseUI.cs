@@ -4,13 +4,13 @@ using TMPro;
 
 public class PhaseUI : MonoBehaviour
 {
-    [SerializeField] private Button endTurnButton;
+    [SerializeField] private Button endPhaseButton;
     [SerializeField] private TextMeshProUGUI phaseLabel;
 
     private void Awake()
     {
-        endTurnButton.onClick.AddListener(OnEndTurnClicked);
-        endTurnButton.gameObject.SetActive(false);
+        endPhaseButton.onClick.AddListener(OnEndTurnClicked);
+        endPhaseButton.gameObject.SetActive(false);
     }
 
     public void UpdateUI(GamePhase phase)
@@ -18,12 +18,21 @@ public class PhaseUI : MonoBehaviour
         phaseLabel.text = $"Phase: {phase}";
 
         // Only show button during SLAY phase
-        endTurnButton.gameObject.SetActive(phase == GamePhase.SLAY);
+        endPhaseButton.gameObject.SetActive(phase == GamePhase.SLAY || phase == GamePhase.PLAY);
     }
 
     private void OnEndTurnClicked()
     {
-        PhaseManager.Instance.SetCurrentPhase(GamePhase.MONSTER);
-        PhaseManager.Instance.AdvancePhase(); // SLAY → MONSTER
+        GamePhase currentPhase = PhaseManager.Instance.CurrentPhase;
+        if (currentPhase == GamePhase.PLAY)
+        {
+            PhaseManager.Instance.SetCurrentPhase(GamePhase.SLAY);
+            PhaseManager.Instance.AdvancePhase(); // PLAY → SLAY
+        }
+        else if (currentPhase == GamePhase.SLAY)
+        {
+            PhaseManager.Instance.SetCurrentPhase(GamePhase.MONSTER);
+            PhaseManager.Instance.AdvancePhase(); // SLAY → MONSTER
+        }
     }
 }

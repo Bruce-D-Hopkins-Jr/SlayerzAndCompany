@@ -26,6 +26,11 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         canvas = GetComponentInParent<Canvas>();
     }
 
+    private bool CanDrag()
+    {
+        return PhaseManager.Instance.CurrentPhase == GamePhase.PLAY;
+    }
+
     public void Setup(Card card)
     {
         this.card = card;
@@ -50,6 +55,8 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!CanDrag()) return;
+
         originalParent = transform.parent;
         transform.SetParent(canvas.transform); // Move to top-level so it can drag freely
 
@@ -63,11 +70,15 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!CanDrag()) return;
+
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!CanDrag()) return;
+
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = Vector2.zero;
 
