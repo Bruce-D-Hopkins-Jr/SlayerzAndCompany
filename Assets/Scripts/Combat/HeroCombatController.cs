@@ -86,6 +86,16 @@ public class HeroCombatController : MonoBehaviour, IDropHandler
         }
     }
 
+    public void Heal(int amount)
+    {
+        int maxHP = heroData.MaxHP;
+        currentHP = Mathf.Min(currentHP + amount, maxHP);
+        Debug.Log($"{heroData.HeroType} healed for {amount}. Current HP: {currentHP}");
+
+        hud = gameObject.GetComponentInChildren<HeroHUD>();
+        hud?.UpdateHealth(currentHP);        
+    }
+
     private void Die()
     {
         Debug.Log($"[HeroCombatController] {heroData.HeroType} has died.");
@@ -108,6 +118,8 @@ public class HeroCombatController : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        if (PhaseManager.Instance.CurrentPhase != GamePhase.PLAY) return;
+
         var cardUI = eventData.pointerDrag?.GetComponent<CardUI>();
         if (cardUI == null) return;
 

@@ -48,6 +48,8 @@ public class MonsterCombatController : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        if (PhaseManager.Instance.CurrentPhase != GamePhase.PLAY) return;
+
         var cardUI = eventData.pointerDrag?.GetComponent<CardUI>();
         if (cardUI == null) return;
 

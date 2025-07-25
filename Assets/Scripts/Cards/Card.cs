@@ -16,3 +16,28 @@ public enum CardType
     UTILITY,
     SKILL
 }
+
+public enum UtilityEffectType
+{
+    HealSingle,
+    HealAll,
+    DamageSingle,
+    DamageAll,
+    DrawCards
+}
+
+public enum UtilityTargetType
+{
+    Hero,
+    AllHeroes,
+    Monster,
+    AllMonsters,
+    None // For non-targeted effects like draw
+}
+
+public enum SkillCardTier
+{
+    Bronze,
+    Silver,
+    Gold
+}

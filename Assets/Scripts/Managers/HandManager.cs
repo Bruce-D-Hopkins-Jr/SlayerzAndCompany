@@ -94,6 +94,8 @@ public class HandManager : MonoBehaviour
 
     public void TryPlayCard(CardUI cardUI, MonoBehaviour target)
     {
+        if (PhaseManager.Instance.CurrentPhase != GamePhase.PLAY) return;
+
         Card card = cardUI.GetCard();
 
         if (!currentHand.Contains(card))
@@ -106,7 +108,12 @@ public class HandManager : MonoBehaviour
         currentHand.Remove(card);
         // 2. Add it to the discard pile
         DeckManager.Instance.AddToDiscard(card);
-        // 3. Destroy the specific UI card that was dropped
+        // 3. Activate card effect
+        if (card is UtilityCard utilityCard)
+        {
+            UtilityCardEffectHandler.ApplyEffect(utilityCard, target);
+        }
+        // 4. Destroy the specific UI card that was dropped
         Destroy(cardUI.gameObject);
 
         if (PhaseManager.Instance.CurrentPhase == GamePhase.PLAY && currentHand.Count == 0)
