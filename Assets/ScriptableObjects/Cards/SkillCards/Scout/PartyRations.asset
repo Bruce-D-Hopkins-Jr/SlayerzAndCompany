@@ -9,11 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 519f7d0e6173a854a861d092be69d799, type: 3}
-  m_Name: Taunt
+  m_Script: {fileID: 11500000, guid: 6e31aa9aad1b75f4f85035343e194125, type: 3}
+  m_Name: PartyRations
   m_EditorClassIdentifier: 
-  cardName: Taunt
+  cardName: Party Rations
   art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
-  heroType: 0
-  description: All monster(s) target the Warrior during the MONSTER phase.
+  heroType: 1
+  effectType: 3
+  targetType: 0
+  skillCardTier: 1
+  effectValue: 5
+  description: Heal all heroes for 5 HP.
+  scoutSkill: 4

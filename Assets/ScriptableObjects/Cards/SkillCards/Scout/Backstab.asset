@@ -9,11 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 519f7d0e6173a854a861d092be69d799, type: 3}
-  m_Name: REVENGE
+  m_Script: {fileID: 11500000, guid: 6e31aa9aad1b75f4f85035343e194125, type: 3}
+  m_Name: Backstab
   m_EditorClassIdentifier: 
-  cardName: Revenge!
+  cardName: Backstab
   art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
-  heroType: 0
-  description: Deal 15 damage to target monster.
+  heroType: 1
+  effectType: 0
+  targetType: 0
+  skillCardTier: 2
+  effectValue: 10
+  description: Deal 10 damage to target monster.
+  scoutSkill: 5
