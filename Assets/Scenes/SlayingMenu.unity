@@ -337,6 +337,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a752e16206612f4fb066ee50f36e00d, type: 2}
   - {fileID: 11400000, guid: 9ebb428b4d576ad419e75ed855307682, type: 2}
   - {fileID: 11400000, guid: cdc04ce34f14c3b42bb6235c186857d5, type: 2}
+  deck: []
+  discardPile: []
 --- !u!1 &266709970
 GameObject:
   m_ObjectHideFlags: 0

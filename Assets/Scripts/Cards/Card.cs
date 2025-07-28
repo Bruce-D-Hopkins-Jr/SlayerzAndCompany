@@ -19,19 +19,35 @@ public enum CardType
 
 public enum UtilityEffectType
 {
-    HealSingle,
-    HealAll,
-    DamageSingle,
-    DamageAll,
+    Heal,
+    HealAOE,
+    Damage,
+    DamageAOE,
     DrawCards
 }
 
 public enum UtilityTargetType
 {
     Hero,
-    AllHeroes,
     Monster,
-    AllMonsters,
+    None // For non-targeted effects like draw
+}
+
+public enum SkillEffectType
+{
+    Damage,
+    DamageAOE,
+    Heal,
+    HealAOE,
+    Buff,
+    BuffAOE,
+    Draw
+}
+
+public enum SkillTargetType
+{
+    Hero,
+    Monster,
     None // For non-targeted effects like draw
 }
 

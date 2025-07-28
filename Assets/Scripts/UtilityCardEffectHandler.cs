@@ -6,7 +6,7 @@ public static class UtilityCardEffectHandler
     {
         switch (card.EffectType)
         {
-            case UtilityEffectType.HealSingle:
+            case UtilityEffectType.Heal:
                 if (target.GetComponent<HeroCombatController>() != null)
                 {
                     HeroCombatController hero = target.GetComponent<HeroCombatController>();
@@ -14,7 +14,7 @@ public static class UtilityCardEffectHandler
                 }                    
                 break;
 
-            case UtilityEffectType.HealAll:
+            case UtilityEffectType.HealAOE:
                 if (target.GetComponent<HeroCombatController>() != null)
                 {
                     foreach (var h in GameObject.FindObjectsByType<HeroCombatController>(FindObjectsSortMode.None))
@@ -24,7 +24,7 @@ public static class UtilityCardEffectHandler
                 }                    
                 break;
 
-            case UtilityEffectType.DamageSingle:
+            case UtilityEffectType.Damage:
                 if (target.GetComponent<MonsterCombatController>() != null)
                 {
                     MonsterCombatController monster = target.GetComponent<MonsterCombatController>();
@@ -32,7 +32,7 @@ public static class UtilityCardEffectHandler
                 }                    
                 break;
 
-            case UtilityEffectType.DamageAll:
+            case UtilityEffectType.DamageAOE:
                 if (target.GetComponent<MonsterCombatController>() != null)
                 {
                     foreach (var m in EncounterManager.Instance.GetActiveEncounterMonsters())
