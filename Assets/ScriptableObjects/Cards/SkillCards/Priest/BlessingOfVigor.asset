@@ -16,9 +16,9 @@ MonoBehaviour:
   art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 3
-  effectType: 4
+  effectType: 6
   targetType: 0
   skillCardTier: 0
-  effectValue: 3
-  description: Inrease the damage of targeted Hero's attack by 3 this turn.
+  effectValue: 1
+  description: Draw 1 card
   priestSkill: 1

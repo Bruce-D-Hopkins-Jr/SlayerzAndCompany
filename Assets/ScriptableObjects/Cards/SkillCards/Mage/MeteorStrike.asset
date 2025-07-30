@@ -21,4 +21,4 @@ MonoBehaviour:
   skillCardTier: 2
   effectValue: 15
   description: Deal 15 damage to a target monster.
-  mageSkill: 0
+  mageSkill: 5

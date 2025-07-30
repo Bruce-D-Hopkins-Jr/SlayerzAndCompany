@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 523320bfae4791e449c68480bf66647d, type: 3}
-  m_Name: ManaInfusion
+  m_Name: ManaSurge
   m_EditorClassIdentifier: 
-  cardName: Mana Infusion
+  cardName: Mana Surge
   art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 2
-  effectType: 4
+  effectType: 2
   targetType: 0
   skillCardTier: 0
-  effectValue: 3
-  description: "Increase Mage\u2019s attack by 3 for this turn"
+  effectValue: 5
+  description: Heal target hero for 5 HP.
   mageSkill: 1

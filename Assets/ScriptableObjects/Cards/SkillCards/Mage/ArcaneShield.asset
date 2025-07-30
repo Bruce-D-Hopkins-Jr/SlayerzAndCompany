@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523320bfae4791e449c68480bf66647d, type: 3}
   m_Name: ArcaneShield
   m_EditorClassIdentifier: 
-  cardName: Arcane Shield
+  cardName: Arcane Sense
   art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 2
-  effectType: 2
+  effectType: 6
   targetType: 0
   skillCardTier: 1
-  effectValue: 5
-  description: Heal 5 HP and reduce damage to 0 if hit during MONSTER phase.
+  effectValue: 2
+  description: Draw 2 cards
   mageSkill: 3

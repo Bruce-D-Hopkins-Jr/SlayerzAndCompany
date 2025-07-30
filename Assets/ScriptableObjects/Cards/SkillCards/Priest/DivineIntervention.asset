@@ -16,9 +16,9 @@ MonoBehaviour:
   art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 3
-  effectType: 2
+  effectType: 3
   targetType: 0
   skillCardTier: 2
-  effectValue: 0
-  description: Heal target hero for 15 HP and grant 10 shield.
+  effectValue: 15
+  description: Heal all heroes 15 HP.
   priestSkill: 5

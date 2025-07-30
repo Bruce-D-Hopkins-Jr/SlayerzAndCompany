@@ -11,9 +11,9 @@ public class MageSkillCard : SkillCard
 public enum MageSkill
 {
     MagicBolt,
-    ManaInfusion,
+    ManaSurge,
     Focus,
-    ArcaneShield,
+    ArcaneSense,
     FlameWave,
     MeteorStrike
 }

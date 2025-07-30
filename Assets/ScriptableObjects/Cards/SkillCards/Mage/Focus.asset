@@ -20,5 +20,5 @@ MonoBehaviour:
   targetType: 2
   skillCardTier: 0
   effectValue: 1
-  description: "Increase Mage\u2019s attack by 3 for this turn"
+  description: Draw 1 card
   mageSkill: 2
