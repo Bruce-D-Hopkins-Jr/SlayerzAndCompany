@@ -10,10 +10,13 @@ public static class SkillCardEffectHandler
                 SkillCardEffectHandler_Mage.ApplyEffect(card, target);
                 break;
             case HeroType.Priest:
+                SkillCardEffectHandler_Priest.ApplyEffect(card, target);
                 break;
             case HeroType.Scout:
+                SkillCardEffectHandler_Scout.ApplyEffect(card, target);
                 break;
             case HeroType.Warrior:
+                SkillCardEffectHandler_Warrior.ApplyEffect(card, target);
                 break;
         }
     }

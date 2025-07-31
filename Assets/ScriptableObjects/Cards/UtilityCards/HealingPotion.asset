@@ -17,5 +17,5 @@ MonoBehaviour:
   cardType: 0
   effectType: 0
   targetType: 0
-  effectValue: 10
-  description: Heal targeted hero for 10 HP.
+  effectValue: 5
+  description: Heal targeted hero for 5 HP.

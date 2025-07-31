@@ -16,9 +16,9 @@ MonoBehaviour:
   art: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cardType: 1
   heroType: 3
-  effectType: 6
+  effectType: 2
   targetType: 0
   skillCardTier: 0
-  effectValue: 1
-  description: Draw 1 card
+  effectValue: 5
+  description: Heal target hero for 5 HP.
   priestSkill: 1

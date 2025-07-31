@@ -17,5 +17,5 @@ MonoBehaviour:
   cardType: 0
   effectType: 2
   targetType: 1
-  effectValue: 10
-  description: Deal 10 damage to target monster.
+  effectValue: 7
+  description: Deal 7 damage to target monster.

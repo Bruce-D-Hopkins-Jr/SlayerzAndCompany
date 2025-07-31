@@ -19,6 +19,6 @@ MonoBehaviour:
   effectType: 1
   targetType: 1
   skillCardTier: 1
-  effectValue: 5
-  description: Deal 5 damage to all monsters.
+  effectValue: 4
+  description: Deal 4 damage to all monsters.
   warriorSkill: 4

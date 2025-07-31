@@ -20,5 +20,5 @@ MonoBehaviour:
   targetType: 0
   skillCardTier: 0
   effectValue: 10
-  description: Heal target hero for 10 HP.
+  description: Heal target hero for 8 HP.
   priestSkill: 0
