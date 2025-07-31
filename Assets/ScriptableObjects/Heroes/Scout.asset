@@ -19,9 +19,9 @@ MonoBehaviour:
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   heroPrefab: {fileID: 1700360962909021933, guid: cc01cf9b46a932e438ce713db6188080, type: 3}
   skillCards:
-  - {fileID: 11400000, guid: 493f7c57c42ec4a4382f039f3b8d33a3, type: 2}
-  - {fileID: 11400000, guid: 493f7c57c42ec4a4382f039f3b8d33a3, type: 2}
-  - {fileID: 11400000, guid: 493f7c57c42ec4a4382f039f3b8d33a3, type: 2}
-  - {fileID: 11400000, guid: e36bd11f20f494e419c3942f1471c17f, type: 2}
-  - {fileID: 11400000, guid: e36bd11f20f494e419c3942f1471c17f, type: 2}
-  - {fileID: 11400000, guid: 40576fc4283915b4c8875698a9c49177, type: 2}
+  - {fileID: 11400000, guid: 8a6494670075e53489cc0b623e9a419a, type: 2}
+  - {fileID: 11400000, guid: 22e41950eb079364698f96d63fae06a6, type: 2}
+  - {fileID: 11400000, guid: 4ea5cee815c5b534f8ec5331b53b5bd1, type: 2}
+  - {fileID: 11400000, guid: 0c3db2975dd176540bbe99d8aa304a06, type: 2}
+  - {fileID: 11400000, guid: c87108e91ca9c254380f772db4339963, type: 2}
+  - {fileID: 11400000, guid: 2bdcda6779ae0d34eb0dcbe130a05e25, type: 2}

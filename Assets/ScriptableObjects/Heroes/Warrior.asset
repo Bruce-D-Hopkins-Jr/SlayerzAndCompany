@@ -20,8 +20,8 @@ MonoBehaviour:
   heroPrefab: {fileID: 5268326057436847629, guid: 8def4057e0317ff44bb0a0b5af67a392, type: 3}
   skillCards:
   - {fileID: 11400000, guid: fff57d70998600c46b7628d2c9442667, type: 2}
-  - {fileID: 11400000, guid: fff57d70998600c46b7628d2c9442667, type: 2}
-  - {fileID: 11400000, guid: fff57d70998600c46b7628d2c9442667, type: 2}
-  - {fileID: 11400000, guid: 5683038e47a20d94684a28ba91f22cd7, type: 2}
-  - {fileID: 11400000, guid: 5683038e47a20d94684a28ba91f22cd7, type: 2}
-  - {fileID: 11400000, guid: 38a22e2fc652582418e50b00abe097cc, type: 2}
+  - {fileID: 11400000, guid: 71479e71e111cbe4ab0a0f2d79e1f604, type: 2}
+  - {fileID: 11400000, guid: c5c6f2344f1bd1847b542b87f6d84d32, type: 2}
+  - {fileID: 11400000, guid: 32f7d4cd594779d4787b1ae24e7360bf, type: 2}
+  - {fileID: 11400000, guid: 5fd52952b317d984fb75f2e87d62ae48, type: 2}
+  - {fileID: 11400000, guid: 2f49adffeba4bcc4081a01f244522a52, type: 2}

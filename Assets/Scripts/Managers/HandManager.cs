@@ -113,6 +113,10 @@ public class HandManager : MonoBehaviour
         {
             UtilityCardEffectHandler.ApplyEffect(utilityCard, target);
         }
+        else if (card is SkillCard skillCard)
+        {
+            SkillCardEffectHandler.ApplyEffect(skillCard, target);
+        }
         // 4. Destroy the specific UI card that was dropped
         Destroy(cardUI.gameObject);
 
