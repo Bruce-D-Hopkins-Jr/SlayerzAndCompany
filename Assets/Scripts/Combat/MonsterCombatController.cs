@@ -1,16 +1,22 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MonsterCombatController : MonoBehaviour, IDropHandler
+public class MonsterCombatController : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Monster monsterData;
     [SerializeField] private MonsterHUD hud;
     [SerializeField] private float hitDelay;
+    private MonsterVisual visual;
     private int currentHP;
     private bool isAlive = true;
 
     public Monster MonsterData => monsterData;
     public bool IsAlive => isAlive;
+
+    private void Awake()
+    {
+        visual = GetComponent<MonsterVisual>();
+    }
 
     public void TakeDamage(int amount)
     {
@@ -53,6 +59,44 @@ public class MonsterCombatController : MonoBehaviour, IDropHandler
         var cardUI = eventData.pointerDrag?.GetComponent<CardUI>();
         if (cardUI == null) return;
 
+        if (!IsValidDrop(eventData))
+        {
+            cardUI.ReturnToHand(); // Send card back
+            return;
+        }
+
         HandManager.Instance.TryPlayCard(cardUI, this);
+    }
+
+    private bool IsValidDrop(PointerEventData eventData)
+    {
+        var cardUI = eventData.pointerDrag?.GetComponent<CardUI>();
+        if (cardUI == null) return false;
+
+        var card = cardUI.GetCard();
+
+        if (card is UtilityCard uc)
+        {
+            return (uc.TargetType == UtilityTargetType.Monster && this is MonsterCombatController);
+        }
+
+        if (card is SkillCard sc)
+        {
+            return (sc.TargetType == SkillTargetType.Monster && this is MonsterCombatController);
+        }
+
+        return false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (IsValidDrop(eventData) && PhaseManager.Instance.CurrentPhase == GamePhase.PLAY)
+            visual?.ShowTargetIndicator(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (PhaseManager.Instance.CurrentPhase == GamePhase.PLAY)
+            visual?.ShowTargetIndicator(false);
     }
 }

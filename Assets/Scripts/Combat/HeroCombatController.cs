@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HeroCombatController : MonoBehaviour, IDropHandler
+public class HeroCombatController : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Hero heroData;
     [SerializeField] private HeroHUD hud;
@@ -123,6 +123,43 @@ public class HeroCombatController : MonoBehaviour, IDropHandler
         var cardUI = eventData.pointerDrag?.GetComponent<CardUI>();
         if (cardUI == null) return;
 
+        if (!IsValidDrop(eventData))
+        {
+            cardUI.ReturnToHand(); // Send card back
+            return;
+        }
+
         HandManager.Instance.TryPlayCard(cardUI, this);
+    }
+
+    private bool IsValidDrop(PointerEventData eventData)
+    {
+        var cardUI = eventData.pointerDrag?.GetComponent<CardUI>();
+        if (cardUI == null) return false;
+
+        var card = cardUI.GetCard();
+
+        if (card is UtilityCard uc)
+        {
+            return (uc.TargetType == UtilityTargetType.Hero && this is HeroCombatController);
+        }
+
+        if (card is SkillCard sc)
+        {
+            return (sc.TargetType == SkillTargetType.Hero && this is HeroCombatController);
+        }
+
+        return false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (IsValidDrop(eventData))
+            visual.ShowTargetIndicator(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        visual?.ShowTargetIndicator(false);
     }
 }

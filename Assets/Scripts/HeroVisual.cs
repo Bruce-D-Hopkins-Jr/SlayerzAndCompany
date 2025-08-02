@@ -17,6 +17,12 @@ public class HeroVisual : MonoBehaviour
             selectionRing.SetActive(show);
     }
 
+    public void ShowTargetIndicator(bool show)
+    {
+        if (targetIndicator != null)
+            targetIndicator.SetActive(show);
+    }
+
     public void SetRingState(HeroRingState state)
     {
         if (selectionRingRenderer == null) return;
@@ -33,13 +39,7 @@ public class HeroVisual : MonoBehaviour
                 selectionRingRenderer.material.color = usedColor;
                 break;
         }
-    }
-
-    public void ShowTargetIndicator(bool show)
-    {
-        if (targetIndicator != null)
-            targetIndicator.SetActive(show);
-    }
+    }    
 }
 
 

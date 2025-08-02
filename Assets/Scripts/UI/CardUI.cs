@@ -53,6 +53,15 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         }
     }
 
+    public void ReturnToHand()
+    {
+        transform.SetParent(originalParent); // e.g., the Hand Panel
+        rectTransform.anchoredPosition = Vector2.zero;
+        transform.localScale = originalScale;
+        canvasGroup.alpha = originalAlpha;
+        canvasGroup.blocksRaycasts = true;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!CanDrag()) return;

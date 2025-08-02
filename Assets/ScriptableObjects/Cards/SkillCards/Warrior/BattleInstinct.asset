@@ -17,7 +17,7 @@ MonoBehaviour:
   cardType: 1
   heroType: 0
   effectType: 6
-  targetType: 2
+  targetType: 0
   skillCardTier: 0
   effectValue: 1
   description: Draw 1 card
