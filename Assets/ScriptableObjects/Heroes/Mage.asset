@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Mage
   m_EditorClassIdentifier: 
   heroType: 2
-  maxHP: 55
-  minAttack: 11
-  maxAttack: 16
+  maxHP: 75
+  minAttack: 15
+  maxAttack: 20
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   heroPrefab: {fileID: 5268326057436847629, guid: fd59accd92a575943974733493a49080, type: 3}
   skillCards:

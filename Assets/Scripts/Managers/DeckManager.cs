@@ -43,8 +43,8 @@ public class DeckManager : MonoBehaviour
         {
             if (deck.Count == 0)
             {
-                if (discardPile.Count == 0) break;
-                ReshuffleDiscardIntoDeck();
+                Debug.Log("Deck is empty");
+                break;
             }
 
             if (deck.Count == 0) break; // Still empty after reshuffle
@@ -81,6 +81,11 @@ public class DeckManager : MonoBehaviour
     public void AddToDiscard(Card card)
     {
         discardPile.Add(card);
+    }
+
+    public int CardsRemaining()
+    {
+        return deck.Count;
     }
 
 }

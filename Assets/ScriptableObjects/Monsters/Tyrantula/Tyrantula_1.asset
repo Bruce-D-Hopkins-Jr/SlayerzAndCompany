@@ -15,8 +15,8 @@ MonoBehaviour:
   monsterType: 0
   monsterStage: 0
   monsterName: Tyrantula (Foundling)
-  maxHP: 150
-  minAttack: 5
-  maxAttack: 10
+  maxHP: 250
+  minAttack: 10
+  maxAttack: 15
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   monsterPrefab: {fileID: 3671104295795256903, guid: 5b670df68c5064344b2831b2f5f73c3e, type: 3}

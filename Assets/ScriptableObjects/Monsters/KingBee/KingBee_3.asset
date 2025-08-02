@@ -16,7 +16,7 @@ MonoBehaviour:
   monsterStage: 2
   monsterName: King Bee (Ascended)
   maxHP: 450
-  minAttack: 15
-  maxAttack: 20
+  minAttack: 18
+  maxAttack: 23
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   monsterPrefab: {fileID: 1764184253062680595, guid: 6e29b78ab4067864bbfaa25d6581d012, type: 3}

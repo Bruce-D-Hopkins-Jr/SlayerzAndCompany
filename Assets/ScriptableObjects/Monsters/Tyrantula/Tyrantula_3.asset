@@ -16,7 +16,7 @@ MonoBehaviour:
   monsterStage: 2
   monsterName: Tyrantula (Ascended)
   maxHP: 450
-  minAttack: 15
-  maxAttack: 20
+  minAttack: 20
+  maxAttack: 25
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   monsterPrefab: {fileID: 3111286801388930637, guid: fc71364f703622b49b0e5544c3d450b5, type: 3}

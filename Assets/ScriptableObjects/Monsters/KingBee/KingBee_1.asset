@@ -16,7 +16,7 @@ MonoBehaviour:
   monsterStage: 0
   monsterName: King Bee (Foundling)
   maxHP: 150
-  minAttack: 5
-  maxAttack: 10
+  minAttack: 8
+  maxAttack: 13
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   monsterPrefab: {fileID: 4972010780711622103, guid: 6fbf269b785575a44a1d5f5a97cad835, type: 3}

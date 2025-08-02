@@ -5,6 +5,7 @@ public class HeroCombatController : MonoBehaviour, IDropHandler, IPointerEnterHa
 {
     [SerializeField] private Hero heroData;
     [SerializeField] private HeroHUD hud;
+    [SerializeField] private GameObject validDropVisual;
     private HeroVisual visual;
     private int currentHP;
     private bool hasActed;
@@ -129,6 +130,8 @@ public class HeroCombatController : MonoBehaviour, IDropHandler, IPointerEnterHa
             return;
         }
 
+        validDropVisual?.SetActive(false);
+
         HandManager.Instance.TryPlayCard(cardUI, this);
     }
 
@@ -154,12 +157,13 @@ public class HeroCombatController : MonoBehaviour, IDropHandler, IPointerEnterHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsValidDrop(eventData))
-            visual.ShowTargetIndicator(true);
+        if (IsValidDrop(eventData) && PhaseManager.Instance.CurrentPhase == GamePhase.PLAY)
+            validDropVisual.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        visual?.ShowTargetIndicator(false);
+        if (PhaseManager.Instance.CurrentPhase == GamePhase.PLAY)
+            validDropVisual.SetActive(false);
     }
 }

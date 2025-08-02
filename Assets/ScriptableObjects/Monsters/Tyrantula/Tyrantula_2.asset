@@ -15,8 +15,8 @@ MonoBehaviour:
   monsterType: 0
   monsterStage: 1
   monsterName: Tyrantula (Mature)
-  maxHP: 300
-  minAttack: 10
-  maxAttack: 15
+  maxHP: 350
+  minAttack: 15
+  maxAttack: 20
   portrait: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   monsterPrefab: {fileID: 4957934930987878976, guid: 1ab69db901a9c974cb3869f21807a111, type: 3}

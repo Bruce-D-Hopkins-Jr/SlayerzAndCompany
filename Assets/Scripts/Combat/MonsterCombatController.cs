@@ -6,17 +6,12 @@ public class MonsterCombatController : MonoBehaviour, IDropHandler, IPointerEnte
     [SerializeField] private Monster monsterData;
     [SerializeField] private MonsterHUD hud;
     [SerializeField] private float hitDelay;
-    private MonsterVisual visual;
+    [SerializeField] private GameObject validDropVisual;
     private int currentHP;
     private bool isAlive = true;
 
     public Monster MonsterData => monsterData;
     public bool IsAlive => isAlive;
-
-    private void Awake()
-    {
-        visual = GetComponent<MonsterVisual>();
-    }
 
     public void TakeDamage(int amount)
     {
@@ -65,6 +60,8 @@ public class MonsterCombatController : MonoBehaviour, IDropHandler, IPointerEnte
             return;
         }
 
+        validDropVisual?.SetActive(false);
+
         HandManager.Instance.TryPlayCard(cardUI, this);
     }
 
@@ -91,12 +88,12 @@ public class MonsterCombatController : MonoBehaviour, IDropHandler, IPointerEnte
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (IsValidDrop(eventData) && PhaseManager.Instance.CurrentPhase == GamePhase.PLAY)
-            visual?.ShowTargetIndicator(true);
+            validDropVisual?.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (PhaseManager.Instance.CurrentPhase == GamePhase.PLAY)
-            visual?.ShowTargetIndicator(false);
+            validDropVisual?.SetActive(false);
     }
 }
