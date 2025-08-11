@@ -36,7 +36,10 @@ public class MonsterCombatController : MonoBehaviour, IDropHandler, IPointerEnte
     {
         Debug.Log($"[MonsterCombatController] {monsterData.MonsterName} has died.");
         isAlive = false;
-        EncounterManager.Instance.NotifyMonsterDefeated();
+        //EncounterManager.Instance.NotifyMonsterDefeated();
+
+        if (EncounterManager.Instance.IsEncounterCleared())
+            EncounterManager.Instance.BeginTravelToNextEncounter();
         Destroy(gameObject);
     }
 

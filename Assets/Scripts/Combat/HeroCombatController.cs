@@ -105,7 +105,7 @@ public class HeroCombatController : MonoBehaviour, IDropHandler, IPointerEnterHa
         Destroy(gameObject);
     }
 
-    private void ResetHeroAction()
+    public void ResetHeroAction()
     {
         hasActed = false;
     }
