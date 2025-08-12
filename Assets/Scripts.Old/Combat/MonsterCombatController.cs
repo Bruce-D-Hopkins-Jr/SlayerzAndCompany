@@ -39,7 +39,10 @@ public class MonsterCombatController : MonoBehaviour, IDropHandler, IPointerEnte
         //EncounterManager.Instance.NotifyMonsterDefeated();
 
         if (EncounterManager.Instance.IsEncounterCleared())
-            EncounterManager.Instance.BeginTravelToNextEncounter();
+        {
+            PhaseManager.Instance.SetCurrentPhase(GamePhase.TRAVEL);
+            PhaseManager.Instance.AdvancePhase();
+        }            
         Destroy(gameObject);
     }
 

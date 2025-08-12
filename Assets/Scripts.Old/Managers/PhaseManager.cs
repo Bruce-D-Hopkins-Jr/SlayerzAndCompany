@@ -133,6 +133,7 @@ public class PhaseManager : MonoBehaviour
         // Unhook immediately to avoid duplicate calls
         EncounterManager.Instance.OnTravelCompleted -= HandleTravelCompleted;
         StartMonsterPhase();
+        AdvancePhase();
     }
 
     private void StartMonsterPhase()
