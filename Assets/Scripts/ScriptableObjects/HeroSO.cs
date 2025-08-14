@@ -5,8 +5,8 @@ using UnityEngine;
 public class HeroSO : ScriptableObject
 {
     [Header("Hero Info")]
-    [SerializeField] private string heroName = "Scout";
-    [SerializeField, TextArea] private string passiveDesc = "+1 draw on first turn.";
+    [SerializeField] private string heroName;
+    [SerializeField, TextArea] private string passiveDesc;
 
     //TODO add field for List of hero starter cards
 
