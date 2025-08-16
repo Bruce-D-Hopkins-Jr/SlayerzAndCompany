@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EventRouter : MonoBehaviour
 {
+    //This script holds all of the game's events
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
